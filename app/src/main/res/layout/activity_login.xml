@@ -97,8 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:padding="5dp"
-            android:text="Don't have an account?"
-            />
+            android:text="Don't have an account?" />
 
         <TextView
             android:id="@+id/tv_register"
@@ -106,8 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:foreground="?attr/selectableItemBackground"
-            android:padding="5dp"
+            android:padding="8dp"
             android:text="Register"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
