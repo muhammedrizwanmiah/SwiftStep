@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_registration.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -37,6 +38,7 @@ class ProfileActivity : AppCompatActivity() {
 
                 firstnameText.text = "Firstname - - > "+snapshot.child("firstname").value.toString()
                 lastnameText.text = "Last name - -> "+snapshot.child("lastname").value.toString()
+                genderText.text = "Gender - - >"+snapshot.child("gender").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {

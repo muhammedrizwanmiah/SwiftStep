@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             else if(TextUtils.isEmpty(passwordInput.text.toString())){
-                usernameInput.setError("Please enter password")
+                passwordInput.setError("Please enter password")
                 return@setOnClickListener
             }
             auth.signInWithEmailAndPassword(usernameInput.text.toString(), passwordInput.text.toString())

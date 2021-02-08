@@ -3,10 +3,12 @@ package com.fitnessproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.RadioButton
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.core.view.View
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -27,7 +29,6 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun register() {
 
-
         registerButton.setOnClickListener {
 
             if(TextUtils.isEmpty(firstnameInput.text.toString())) {
@@ -45,13 +46,20 @@ class RegistrationActivity : AppCompatActivity() {
             }
 
 
-            auth.createUserWithEmailAndPassword(usernameInput.text.toString(), passwordInput.text.toString())
+            auth.createUserWithEmailAndPassword(usernameInput.text.toString(), passwordInput.text.toString(), )
                 .addOnCompleteListener {
                     if(it.isSuccessful) {
                         val currentUser = auth.currentUser
                         val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
+
+                        val genderRadioButtonText = when (registerGenderGroup.checkedRadioButtonId) {
+                            R.id.radioMaleBtn -> radioMaleBtn.text
+                            else -> radioFemaleBtn.text
+                        }
+
                         currentUSerDb?.child("firstname")?.setValue(firstnameInput.text.toString())
                         currentUSerDb?.child("lastname")?.setValue(lastnameInput.text.toString())
+                        currentUSerDb?.child("gender")?.setValue(genderRadioButtonText.toString())
 
                         Toast.makeText(this@RegistrationActivity, "Registration Success. ", Toast.LENGTH_LONG).show()
                         finish()
