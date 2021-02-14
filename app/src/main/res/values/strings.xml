@@ -3,4 +3,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activityInfo">* <b>Low Activity:</b> Almost no exercise. Watch TV, play video games, sitting for long periods.\n\n<b>Moderate Activity:</b> Exercise 3-4 times a week. On your feet regularly. \n\n<b>Heavy Activity:</b> Exercise almost every day. Do intense workouts e.g sports, gym few times a week</string>
 </resources>

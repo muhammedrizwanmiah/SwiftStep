@@ -1,9 +1,11 @@
 package com.fitnessproject
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,6 +18,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+        val animDrawable = login_layout.background as AnimationDrawable
+        animDrawable.setEnterFadeDuration(1000)
+        animDrawable.setExitFadeDuration(4000)
+        animDrawable.start()
 
         auth = FirebaseAuth.getInstance()
 

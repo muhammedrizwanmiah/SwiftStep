@@ -2,161 +2,361 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="@drawable/gradient_animation"
+    tools:context=".RegistrationActivity">
 
+    <ImageView
+        android:id="@+id/registrationCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/card" />
 
-    <TextView android:id="@+id/titleTv"
+    <TextView
+        android:id="@+id/registrationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:text="Registration"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
-
-    <EditText android:id="@+id/firstnameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTv"
-        android:hint="enter first name"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+        app:layout_constraintTop_toTopOf="@id/registrationCard" />
 
-    <EditText android:id="@+id/lastnameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstnameInput"
-        android:hint="enter last name"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
-    <EditText android:id="@+id/usernameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastnameInput"
-        android:hint="enter email"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+    <ScrollView
+        android:layout_width="305dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="110dp"
 
-    <EditText android:id="@+id/passwordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInput"
-        android:hint="enter password"
-        android:inputType="textPassword"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+        android:scrollbarStyle="outsideInset"
 
-    <RadioGroup
-        android:id="@+id/registerGenderGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput">
+        app:layout_constraintStart_toStartOf="@id/registerButton"
+        app:layout_constraintTop_toBottomOf="@id/registrationTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
-        <RadioButton
-            android:id="@+id/radioMaleBtn"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Male" />
-        <RadioButton
-            android:id="@+id/radioFemaleBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Female" />
-    </RadioGroup>
+            >
 
-    <EditText android:id="@+id/ageInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerGenderGroup"
-        android:hint="enter age"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:paddingLeft="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
-    <EditText android:id="@+id/heightInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageInput"
-        android:hint="enter height (cm)"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+            <EditText
+                android:id="@+id/firstnameInput"
+                android:layout_width="145dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:hint="first name"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameLabel"
+                />
 
-    <EditText android:id="@+id/weightInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightInput"
-        android:hint="enter weight (kg)"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        />
+            <EditText
+                android:id="@+id/lastnameInput"
+                android:layout_width="145dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:background="@drawable/input_field_background"
+                android:hint="last name"
+                android:textColor="#000000"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameLabel"
+                />
 
-    <RadioGroup
-        android:id="@+id/activityLevelGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightInput">
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="10dp"
 
-        <RadioButton
-            android:id="@+id/radioLowActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Low" />
-        <RadioButton
-            android:id="@+id/radioModerateActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Moderate" />
-        <RadioButton
-            android:id="@+id/radioHighActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="High" />
-    </RadioGroup>
+                android:text="E-mail"
+                app:layout_constraintTop_toBottomOf="@id/firstnameInput"
+                app:layout_constraintBottom_toTopOf="@+id/usernameInput"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/usernameInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#000000"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailLabel" />
+
+            <TextView
+                android:id="@+id/passwordLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="10dp"
+
+                android:text="Password"
+                app:layout_constraintTop_toBottomOf="@id/usernameInput"
+                app:layout_constraintBottom_toTopOf="@+id/passwordInput"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+
+            <TextView
+                android:id="@+id/genderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="10dp"
+
+                android:text="Gender"
+                app:layout_constraintTop_toBottomOf="@id/passwordInput"
+                app:layout_constraintBottom_toTopOf="@+id/registerGenderGroup"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/registerGenderGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/genderLabel">
+
+                <RadioButton
+                    android:id="@+id/radioMaleBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:checked="true"
+                    android:onClick="genderButtonClicked"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:textAllCaps="true"
+                    android:background="@drawable/radio_left_checked"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/radioFemaleBtn"
+                    android:onClick="genderButtonClicked"
+                    android:background="@drawable/radio_right_unchecked"
+                    android:layout_width="150dp"
+                    android:textAllCaps="true"
+                    android:button="@null"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="Female" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/ageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+
+                android:text="Age"
+                app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
+                app:layout_constraintBottom_toTopOf="@+id/ageInput"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ageInput"
+                />
+
+            <TextView
+                android:id="@+id/heightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+
+                android:text="Height (cm)"
+                app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
+                app:layout_constraintBottom_toTopOf="@+id/ageInput"
+                app:layout_constraintStart_toStartOf="@id/heightInput"
+                app:layout_constraintEnd_toEndOf="@id/heightInput"
+                />
+
+            <TextView
+                android:id="@+id/weightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+
+                android:text="Weight (kg)"
+                app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
+                app:layout_constraintBottom_toTopOf="@+id/ageInput"
+                app:layout_constraintStart_toStartOf="@id/weightInput"
+                app:layout_constraintEnd_toEndOf="@id/weightInput"
+                />
+
+            <EditText
+                android:id="@+id/ageInput"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:inputType="number"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ageLabel" />
+
+            <EditText
+                android:id="@+id/heightInput"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toStartOf="@id/weightInput"
+                app:layout_constraintStart_toEndOf="@id/ageInput"
+                app:layout_constraintTop_toBottomOf="@id/heightLabel" />
+
+            <EditText
+                android:id="@+id/weightInput"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_field_background"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weightLabel"
+                />
+
+            <TextView
+                android:id="@+id/activityLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="10dp"
+
+                android:text="Activity Level*"
+                app:layout_constraintTop_toBottomOf="@id/ageInput"
+                app:layout_constraintBottom_toTopOf="@+id/activityLevelGroup"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <RadioGroup
+                android:id="@+id/activityLevelGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activityLevelLabel">
+
+                <RadioButton
+                    android:id="@+id/radioLowActivity"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:checked="true"
+                    android:button="@null"
+                    android:textAllCaps="true"
+                    android:onClick="activityButtonClicked"
+                    android:background="@drawable/radio_left_checked"
+                    android:gravity="center"
+                    android:text="Low" />
+
+                <RadioButton
+                    android:id="@+id/radioModerateActivity"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:textAllCaps="true"
+                    android:onClick="activityButtonClicked"
+                    android:background="@drawable/radio_middle_unchecked"
+                    android:text="Moderate" />
+
+                <RadioButton
+                    android:id="@+id/radioHighActivity"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:textAllCaps="true"
+                    android:onClick="activityButtonClicked"
+                    android:background="@drawable/radio_right_unchecked"
+                    android:text="High" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/activityInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:text="@string/activityInfo"
+                android:textSize="15dp"
+
+                app:layout_constraintTop_toBottomOf="@id/activityLevelGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Register"
-        android:textAllCaps="false"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/login_register_button_bg"
+
+        android:text="REGISTER"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityLevelGroup" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

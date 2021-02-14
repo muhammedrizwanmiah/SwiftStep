@@ -1,15 +1,21 @@
 package com.fitnessproject
 
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Button
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.core.view.View
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
+import kotlinx.android.synthetic.main.activity_registration.passwordInput
+import kotlinx.android.synthetic.main.activity_registration.usernameInput
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -20,11 +26,40 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
+        window.decorView.systemUiVisibility = android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+        val animDrawable = registration_layout.background as AnimationDrawable
+        animDrawable.setEnterFadeDuration(1000)
+        animDrawable.setExitFadeDuration(4000)
+        animDrawable.start()
+
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
 
         register()
+    }
+
+    fun genderButtonClicked(view: android.view.View) {
+
+        if (view is RadioButton) {
+            // Is the button now checked?
+            val checked = view.isChecked
+
+            // Check which radio button was clicked
+            when (view.getId()) {
+                R.id.radioMaleBtn ->
+                    if (checked) { radioMaleBtn.setBackgroundResource(R.drawable.radio_left_checked)
+                        radioFemaleBtn.setBackgroundResource(R.drawable.radio_right_unchecked)
+
+                    }
+                R.id.radioFemaleBtn ->
+                    if (checked) {
+                        radioMaleBtn.setBackgroundResource(R.drawable.radio_left_unchecked)
+                        radioFemaleBtn.setBackgroundResource(R.drawable.radio_right_checked)
+                    }
+            }
+        }
     }
 
     private fun register() {
@@ -102,4 +137,35 @@ class RegistrationActivity : AppCompatActivity() {
                 }
         }
     }
+
+    fun activityButtonClicked(view: android.view.View) {
+        if (view is RadioButton) {
+            // Is the button now checked?
+            val checked = view.isChecked
+
+            // Check which radio button was clicked
+            when (view.getId()) {
+                R.id.radioLowActivity ->
+                    if (checked) { radioLowActivity.setBackgroundResource(R.drawable.radio_left_checked)
+                        radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_unchecked)
+                        radioHighActivity.setBackgroundResource(R.drawable.radio_right_unchecked)
+
+                    }
+                R.id.radioModerateActivity ->
+                    if (checked) {
+                        radioLowActivity.setBackgroundResource(R.drawable.radio_left_unchecked)
+                        radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_checked)
+                        radioHighActivity.setBackgroundResource(R.drawable.radio_right_unchecked)
+                    }
+                R.id.radioHighActivity ->
+                    if (checked) {
+                        radioLowActivity.setBackgroundResource(R.drawable.radio_left_unchecked)
+                        radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_unchecked)
+                        radioHighActivity.setBackgroundResource(R.drawable.radio_right_checked)
+                    }
+            }
+        }
+
+    }
+
 }
