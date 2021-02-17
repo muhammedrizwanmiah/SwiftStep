@@ -47,14 +47,24 @@ class ProfileFragment : Fragment() {
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
 
-        emailText.text = "Email  -- > " + user?.email
+        emailText.text = user?.email
 
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                firstnameText.text = "Firstname - - > " + snapshot.child("firstname").value.toString()
-                lastnameText.text = "Last name - -> " + snapshot.child("lastname").value.toString()
-                genderText.text = "Gender - ->" + snapshot.child("gender").value.toString()
+                fullnameText.text = snapshot.child("firstname").value.toString() + " " + snapshot.child("lastname").value.toString()
+                genderText.text = "Gender: " + snapshot.child("gender").value.toString()
+                ageText.text = "Age: " + snapshot.child("age").value.toString() + " years old"
+                heightText.text = "Height: " + snapshot.child("height").value.toString() + "cm"
+                weightText.text = "Weight: " + snapshot.child("weight").value.toString() + "kg"
+                activityLevelText.text = "Activity Level: " + snapshot.child("activitylevel").value.toString()
+
+
+                if (snapshot.child("gender").value.toString() == "Male"){
+                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_male)
+                } else {
+                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_female)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

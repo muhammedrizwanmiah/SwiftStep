@@ -24,5 +24,4 @@
         android:layout_above="@+id/bottom_navigation"/>
 
 
-
 </RelativeLayout>
