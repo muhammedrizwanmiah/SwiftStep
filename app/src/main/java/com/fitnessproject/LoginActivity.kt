@@ -21,10 +21,11 @@ class LoginActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
-        val animDrawable = login_layout.background as AnimationDrawable
-        animDrawable.setEnterFadeDuration(1000)
-        animDrawable.setExitFadeDuration(4000)
-        animDrawable.start()
+
+//        val animDrawable = login_layout.background as AnimationDrawable
+//        animDrawable.setEnterFadeDuration(1000)
+//        animDrawable.setExitFadeDuration(4000)
+//        animDrawable.start()
 
         auth = FirebaseAuth.getInstance()
 

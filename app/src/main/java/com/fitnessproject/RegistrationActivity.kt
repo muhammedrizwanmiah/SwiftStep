@@ -1,5 +1,6 @@
 package com.fitnessproject
 
+import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,11 +29,6 @@ class RegistrationActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
-        val animDrawable = registration_layout.background as AnimationDrawable
-        animDrawable.setEnterFadeDuration(1000)
-        animDrawable.setExitFadeDuration(4000)
-        animDrawable.start()
-
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
@@ -52,11 +48,16 @@ class RegistrationActivity : AppCompatActivity() {
                     if (checked) { radioMaleBtn.setBackgroundResource(R.drawable.radio_left_checked)
                         radioFemaleBtn.setBackgroundResource(R.drawable.radio_right_unchecked)
 
+                        radioMaleBtn.setTextColor(Color.parseColor("#303030")) //dark mode bg color
+                        radioFemaleBtn.setTextColor(Color.parseColor("#FFFFFFFF")) //android white color
+
                     }
                 R.id.radioFemaleBtn ->
                     if (checked) {
                         radioMaleBtn.setBackgroundResource(R.drawable.radio_left_unchecked)
                         radioFemaleBtn.setBackgroundResource(R.drawable.radio_right_checked)
+                        radioMaleBtn.setTextColor(Color.parseColor("#FFFFFFFF")) //dark mode bg color
+                        radioFemaleBtn.setTextColor(Color.parseColor("#303030")) //android white color
                     }
             }
         }
@@ -150,18 +151,32 @@ class RegistrationActivity : AppCompatActivity() {
                         radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_unchecked)
                         radioHighActivity.setBackgroundResource(R.drawable.radio_right_unchecked)
 
+                        radioLowActivity.setTextColor(Color.parseColor("#303030")) //dark mode bg color
+                        radioModerateActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //android white color
+                        radioHighActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //android white color
+
+
+
                     }
                 R.id.radioModerateActivity ->
                     if (checked) {
                         radioLowActivity.setBackgroundResource(R.drawable.radio_left_unchecked)
                         radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_checked)
                         radioHighActivity.setBackgroundResource(R.drawable.radio_right_unchecked)
+
+                        radioLowActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //white color
+                        radioModerateActivity.setTextColor(Color.parseColor("#303030")) //darkmode bg color
+                        radioHighActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //white color
                     }
                 R.id.radioHighActivity ->
                     if (checked) {
                         radioLowActivity.setBackgroundResource(R.drawable.radio_left_unchecked)
                         radioModerateActivity.setBackgroundResource(R.drawable.radio_middle_unchecked)
                         radioHighActivity.setBackgroundResource(R.drawable.radio_right_checked)
+
+                        radioLowActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //white color
+                        radioModerateActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //android white color
+                        radioHighActivity.setTextColor(Color.parseColor("#303030")) //dark mode bg color
                     }
             }
         }

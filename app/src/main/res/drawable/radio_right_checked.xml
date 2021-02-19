@@ -3,6 +3,6 @@
     <corners android:topRightRadius="10dp"
         android:bottomRightRadius="10dp"
         ></corners>
-    <solid android:color="#ffebee"/>
-    <stroke android:width="2dp" android:color="#ffebee"></stroke>
+    <solid android:color="@color/colorAccent"/>
+    <stroke android:width="2dp" android:color="@color/colorAccent"></stroke>
 </shape>

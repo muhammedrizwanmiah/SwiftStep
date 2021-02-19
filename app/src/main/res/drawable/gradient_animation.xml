@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="4000"
-        android:drawable="@drawable/bg_gradient1"/>
+<!--    <item android:duration="4000"-->
+<!--        android:drawable="@drawable/bg_gradient1"/>-->
 
-    <item android:duration="4000"
-        android:drawable="@drawable/bg_gradient2"/>
+<!--    <item android:duration="4000"-->
+<!--        android:drawable="@drawable/bg_gradient2"/>-->
 </animation-list>

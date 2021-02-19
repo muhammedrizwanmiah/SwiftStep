@@ -3,6 +3,6 @@
     <corners android:topLeftRadius="10dp"
         android:bottomLeftRadius="10dp"
         ></corners>
-    <solid android:color="@android:color/white"/>
-    <stroke android:width="2dp" android:color="#ffebee"></stroke>
+    <solid android:color="@color/darkmode_input"/>
+    <stroke android:width="2dp" android:color="@color/darkmode_input"></stroke>
 </shape>

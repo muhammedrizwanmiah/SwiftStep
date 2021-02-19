@@ -5,7 +5,7 @@
     android:id="@+id/registration_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_animation"
+    android:background="@color/colorPrimary"
     tools:context=".RegistrationActivity">
 
     <ImageView
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:text="Registration"
-        android:textColor="#000000"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:text="Full Name"
                 android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 />
@@ -67,7 +68,8 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/input_field_background"
                 android:hint="first name"
-                android:textColor="#000000"
+                android:textColorHint="@color/whiteHintColor"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +84,8 @@
                 android:gravity="center"
                 android:background="@drawable/input_field_background"
                 android:hint="last name"
-                android:textColor="#000000"
+                android:textColorHint="@color/whiteHintColor"
+                android:textColor="@color/colorPrimary"
                 android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameLabel"
@@ -94,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
 
                 android:text="E-mail"
                 app:layout_constraintTop_toBottomOf="@id/firstnameInput"
@@ -108,7 +112,7 @@
                 android:background="@drawable/input_field_background"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimary"
                 android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
 
                 android:text="Password"
                 app:layout_constraintTop_toBottomOf="@id/usernameInput"
@@ -135,7 +140,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:inputType="textPassword"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimary"
                 android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -147,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
 
                 android:text="Gender"
                 app:layout_constraintTop_toBottomOf="@id/passwordInput"
@@ -159,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
+                android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/genderLabel">
@@ -172,6 +179,7 @@
                     android:gravity="center"
                     android:button="@null"
                     android:textAllCaps="true"
+                    android:textColor="@color/darkmode_background"
                     android:background="@drawable/radio_left_checked"
                     android:text="Male" />
 
@@ -182,6 +190,7 @@
                     android:layout_width="150dp"
                     android:textAllCaps="true"
                     android:button="@null"
+                    android:textColor="@android:color/white"
                     android:layout_height="45dp"
                     android:gravity="center"
                     android:text="Female" />
@@ -192,6 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:textColor="@android:color/white"
 
                 android:text="Age"
                 app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
@@ -205,6 +215,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:textColor="@android:color/white"
 
                 android:text="Height (cm)"
                 app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
@@ -218,6 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:textColor="@android:color/white"
 
                 android:text="Weight (kg)"
                 app:layout_constraintTop_toBottomOf="@id/registerGenderGroup"
@@ -236,7 +248,7 @@
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ageLabel" />
 
@@ -247,7 +259,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/input_field_background"
                 android:inputType="number"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -262,7 +274,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/input_field_background"
                 android:inputType="number"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -276,6 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
 
                 android:text="Activity Level*"
                 app:layout_constraintTop_toBottomOf="@id/ageInput"
@@ -298,6 +311,7 @@
                     android:layout_height="45dp"
                     android:checked="true"
                     android:button="@null"
+                    android:textColor="@color/darkmode_background"
                     android:textAllCaps="true"
                     android:onClick="activityButtonClicked"
                     android:background="@drawable/radio_left_checked"
@@ -310,6 +324,7 @@
                     android:layout_height="45dp"
                     android:gravity="center"
                     android:button="@null"
+                    android:textColor="@android:color/white"
                     android:textAllCaps="true"
                     android:onClick="activityButtonClicked"
                     android:background="@drawable/radio_middle_unchecked"
@@ -321,6 +336,7 @@
                     android:layout_height="45dp"
                     android:gravity="center"
                     android:button="@null"
+                    android:textColor="@android:color/white"
                     android:textAllCaps="true"
                     android:onClick="activityButtonClicked"
                     android:background="@drawable/radio_right_unchecked"
@@ -332,6 +348,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
 
                 android:text="@string/activityInfo"
                 android:textSize="15dp"
@@ -352,7 +369,7 @@
         android:background="@drawable/login_register_button_bg"
 
         android:text="REGISTER"
-        android:textColor="@android:color/white"
+        android:textColor="@color/darkmode_background"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
