@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/navBarColor"
-        app:itemIconTint="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_nav_color"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/nav_menu"
         />
