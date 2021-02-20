@@ -59,11 +59,11 @@ class ProfileFragment : Fragment() {
                 weightText.text = "Weight: " + snapshot.child("weight").value.toString() + "kg"
                 activityLevelText.text = "Activity Level: " + snapshot.child("activitylevel").value.toString()
 
-
+                //logic for setting profile pic depending on user gender
                 if (snapshot.child("gender").value.toString() == "Male"){
-                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_male)
+                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_male) //if gender male, set pic to male
                 } else {
-                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_female)
+                    profilePic.setBackgroundResource(R.drawable.ic_profilepic_female) //else set pic to female
                 }
             }
 

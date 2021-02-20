@@ -5,13 +5,13 @@ import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.database.core.view.View
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -108,12 +108,12 @@ class RegistrationActivity : AppCompatActivity() {
                         val currentUser = auth.currentUser
                         val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
 
-                        val genderRadioButtonText = when (registerGenderGroup.checkedRadioButtonId) {
+                        val genderRadioButtonText = when (registerGenderGroup.checkedRadioButtonId) { //getting text value of gender radio button
                             R.id.radioMaleBtn -> radioMaleBtn.text
                             else -> radioFemaleBtn.text
                         }
 
-                        val activityLevelText = when (activityLevelGroup.checkedRadioButtonId){
+                        val activityLevelText = when (activityLevelGroup.checkedRadioButtonId){ //getting text value of selected activityLevelButton
                             R.id.radioLowActivity -> radioLowActivity.text
                             R.id.radioModerateActivity -> radioModerateActivity.text
                             R.id.radioHighActivity -> radioHighActivity.text
@@ -127,7 +127,7 @@ class RegistrationActivity : AppCompatActivity() {
                         currentUSerDb?.child("height")?.setValue(heightInput.text.toString().toInt())
                         currentUSerDb?.child("weight")?.setValue(weightInput.text.toString().toInt())
                         currentUSerDb?.child("activitylevel")?.setValue(activityLevelText.toString())
-
+                        setBMI()
 
                         Toast.makeText(this@RegistrationActivity, "Registration Success. ", Toast.LENGTH_LONG).show()
                         finish()
@@ -139,6 +139,19 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
+    private fun setBMI() {
+
+        val currentUser = auth.currentUser
+        val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
+
+        //setting BMI using height and weight given
+        var heightInMetres = heightInput.text.toString().toDouble() / 100
+        var weight = weightInput.text.toString().toDouble()
+        var BMI = weight / (heightInMetres * heightInMetres)
+        var roundedBMI = Math.round(BMI*100.0)/100.0
+        currentUSerDb?.child("BMI")?.setValue(roundedBMI)
+    }
+    
     fun activityButtonClicked(view: android.view.View) {
         if (view is RadioButton) {
             // Is the button now checked?
