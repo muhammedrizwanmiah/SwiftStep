@@ -1,14 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkmode_background"
     tools:context=".fragments.StepsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Steps fragment" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/BMIdetails"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/input_field_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/FrameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="@id/BMIdetails"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/userDetailsHeading"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/card_heading"
+            android:tint="@color/cardHeadingColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BMIDetailsHeading"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+            <ImageView
+                android:id="@+id/userDetailsArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_arrow_right"
+                android:tint="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="@id/userDetailsHeading"
+                app:layout_constraintBottom_toBottomOf="@id/userDetailsHeading"
+                app:layout_constraintEnd_toEndOf="@id/userDetailsHeading"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/bottomRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toBottomOf="@id/topRow"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCenterBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/overweight"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/bmi_category_card_bottom_left"
+                android:tint="@color/orange" />
+
+            <ImageView
+                android:id="@+id/obese"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/bmi_category_card_bottom_right"
+                android:tint="@color/red" />
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/overweightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Overweight"
+                android:textAllCaps="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineCenterBottom"
+                />
+
+            <TextView
+                android:id="@+id/obeseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Obese"
+                android:textAllCaps="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guidelineCenterBottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/topRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toBottomOf="@id/FrameLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineCenterTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent="0.5"
+                android:orientation="vertical" />
+
+
+            <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+                <ImageView
+                android:id="@+id/underweight"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/bmi_category_card_top"
+                android:tint="@color/yellow" />
+
+            <ImageView
+                android:id="@+id/normalweight"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/bmi_category_card_top"
+                android:tint="@color/green" />
+
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/underweightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Underweight"
+                android:textAllCaps="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineCenterTop"
+                />
+
+            <TextView
+                android:id="@+id/normalweightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal Weight"
+                android:textAllCaps="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guidelineCenterTop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/BMICircle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/white_circle"
+        android:tint="@color/darkmode_background"
+        app:layout_constraintTop_toBottomOf="@id/FrameLayout2"
+        app:layout_constraintBottom_toBottomOf="@id/bottomRow"
+        app:layout_constraintStart_toStartOf="@id/BMIdetails"
+        app:layout_constraintEnd_toEndOf="@id/BMIdetails"
+        />
+
+    <TextView
+        android:id="@+id/yourBMItext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/BMICircle"
+        app:layout_constraintEnd_toEndOf="@id/BMICircle"
+        app:layout_constraintTop_toTopOf="@id/BMICircle"
+        app:layout_constraintBottom_toBottomOf="@id/BMICircle"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

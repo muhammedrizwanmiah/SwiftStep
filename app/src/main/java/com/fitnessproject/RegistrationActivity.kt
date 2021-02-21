@@ -145,13 +145,14 @@ class RegistrationActivity : AppCompatActivity() {
         val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
 
         //setting BMI using height and weight given
-        var heightInMetres = heightInput.text.toString().toDouble() / 100
-        var weight = weightInput.text.toString().toDouble()
-        var BMI = weight / (heightInMetres * heightInMetres)
-        var roundedBMI = Math.round(BMI*100.0)/100.0
+        val heightInMetres = heightInput.text.toString().toDouble() / 100
+        val weight = weightInput.text.toString().toDouble()
+        val BMI = weight / (heightInMetres * heightInMetres)
+        val roundedBMI = Math.round(BMI*100.0)/100.0
+
         currentUSerDb?.child("BMI")?.setValue(roundedBMI)
     }
-    
+
     fun activityButtonClicked(view: android.view.View) {
         if (view is RadioButton) {
             // Is the button now checked?
