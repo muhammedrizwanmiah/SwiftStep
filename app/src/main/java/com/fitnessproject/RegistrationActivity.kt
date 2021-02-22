@@ -153,7 +153,7 @@ class RegistrationActivity : AppCompatActivity() {
         currentUSerDb?.child("BMI")?.setValue(roundedBMI)
     }
 
-    fun activityButtonClicked(view: android.view.View) {
+    fun activityButtonClicked(view: android.view.View) { //function is checking to see which radio button in activityLevel group is checked so it can write the value to database later
         if (view is RadioButton) {
             // Is the button now checked?
             val checked = view.isChecked
