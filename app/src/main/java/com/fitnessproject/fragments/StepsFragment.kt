@@ -52,16 +52,16 @@ class StepsFragment : Fragment() {
                 //logic for colour text changing based on BMI number
 
                 if (snapshot.child("BMI").value.toString().toDouble() >= 18.5 && snapshot.child("BMI").value.toString().toDouble() <= 25.0){
-                    yourBMItext.setTextColor(Color.parseColor("#66bb6a")) //healthy weight, set text to green
+                    yourBMItext.setTextColor(Color.parseColor("#66bb6a")) //if healthy weight, set text to green
                 }
                 else if (snapshot.child("BMI").value.toString().toDouble() < 18.5){
-                    yourBMItext.setTextColor(Color.parseColor("#ffee58")) //underweight, set text to yellow
+                    yourBMItext.setTextColor(Color.parseColor("#ffee58")) //if underweight, set text to yellow
                 }
                 else if (snapshot.child("BMI").value.toString().toDouble() > 25 && snapshot.child("BMI").value.toString().toDouble() <= 30 ){
-                    yourBMItext.setTextColor(Color.parseColor("#ffb300")) //overweight, set text to orange
+                    yourBMItext.setTextColor(Color.parseColor("#ffb300")) //if overweight, set text to orange
                 }
                 else {
-                    yourBMItext.setTextColor(Color.parseColor("#ef5350")) //obese, else set to red
+                    yourBMItext.setTextColor(Color.parseColor("#ef5350")) //if obese, else set to red
                 }
 
             }

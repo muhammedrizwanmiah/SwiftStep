@@ -1,19 +1,13 @@
 package com.fitnessproject
 
 import android.graphics.Color
-import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import android.widget.Button
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.core.view.View
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.passwordInput
 import kotlinx.android.synthetic.main.activity_registration.usernameInput

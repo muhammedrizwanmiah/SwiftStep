@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import com.fitnessproject.LoginActivity
 
 import com.fitnessproject.R
+import com.fitnessproject.UpdateDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 /**
@@ -80,5 +80,13 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
 
         }
+
+        userDetailsFrameLayout.setOnClickListener {
+            requireActivity()
+            val intent = Intent (requireActivity(), UpdateDetails::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

@@ -26,15 +26,27 @@
             android:layout_height="wrap_content"
             >
 
+            <TextView
+                android:id="@+id/profileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
             <ImageView
                 android:id="@+id/profileBackground"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/card_gradient"
                 android:tint="@color/colorAccent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/profileTitle" />
 
             <TextView
                 android:id="@+id/fullnameText"
@@ -127,7 +139,7 @@
                 android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@id/ageIcon"
                 app:layout_constraintStart_toStartOf="@id/userDetails"
-                app:layout_constraintTop_toBottomOf="@id/FrameLayout2" />
+                app:layout_constraintTop_toBottomOf="@id/userDetailsFrameLayout" />
 
             <TextView
                 android:id="@+id/genderText"
@@ -267,7 +279,7 @@
                 app:layout_constraintTop_toBottomOf="@id/userDetails" />
 
             <FrameLayout
-                android:id="@+id/FrameLayout2"
+                android:id="@+id/userDetailsFrameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/userDetails">

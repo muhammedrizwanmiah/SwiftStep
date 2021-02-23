@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkmode_background"
+    tools:context=".UpdateDetails">
+
+    <ImageView
+        android:id="@+id/updateDetailsCard"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="470dp"
+        app:layout_constraintTop_toBottomOf="@id/updateProfileTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/updateDetailsButton"
+        android:tint="@color/cardHeadingColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/input_field_background" />
+
+    <TextView
+        android:id="@+id/updateProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="24dp"
+        android:textColor="@android:color/white"
+        android:text="Update Details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Full Name"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="@id/updateDetailsCard"
+        app:layout_constraintStart_toStartOf="@id/updateFirstNameInput"
+        />
+
+    <EditText
+        android:id="@+id/updateFirstNameInput"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/input_field_background"
+        android:hint="first name"
+        android:textColorHint="@color/whiteHintColor"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameLabel"
+        />
+
+    <EditText
+        android:id="@+id/updateLastNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:background="@drawable/input_field_background"
+        android:hint="last name"
+        android:textColorHint="@color/whiteHintColor"
+        android:textColor="@color/colorPrimary"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="@id/updateFirstNameInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/updateFirstNameInput"
+        />
+
+    <TextView
+        android:id="@+id/currentGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/genderLabel"
+        app:layout_constraintBottom_toBottomOf="@id/genderLabel"
+        />
+
+    <TextView
+        android:id="@+id/genderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+
+        android:text="Gender - Current: "
+        app:layout_constraintTop_toBottomOf="@id/updateLastNameInput"
+        app:layout_constraintBottom_toTopOf="@+id/updateGenderGroup"
+        app:layout_constraintStart_toStartOf="@id/updateFirstNameInput" />
+
+    <RadioGroup
+        android:id="@+id/updateGenderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/genderLabel"
+        app:layout_constraintTop_toBottomOf="@id/genderLabel">
+
+        <RadioButton
+            android:id="@+id/updateRadioMaleBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:checked="true"
+            android:onClick="updateGenderButtonClicked"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="2"
+            android:textAllCaps="true"
+            android:textColor="@color/darkmode_background"
+            android:background="@drawable/radio_left_checked"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/updateRadioFemaleBtn"
+            android:onClick="updateGenderButtonClicked"
+            android:background="@drawable/radio_right_unchecked"
+            android:layout_width="match_parent"
+            android:textAllCaps="true"
+            android:layout_weight="2"
+            android:button="@null"
+            android:textColor="@android:color/white"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="Female" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/ageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+
+        android:text="Age"
+        app:layout_constraintTop_toBottomOf="@id/updateGenderGroup"
+        app:layout_constraintBottom_toTopOf="@+id/updateAgeInput"
+        app:layout_constraintStart_toStartOf="@id/updateAgeInput"
+        app:layout_constraintEnd_toEndOf="@id/updateAgeInput"
+        />
+
+    <TextView
+        android:id="@+id/heightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textColor="@android:color/white"
+
+        android:text="Height (cm)"
+        app:layout_constraintTop_toBottomOf="@id/updateGenderGroup"
+        app:layout_constraintBottom_toTopOf="@+id/updateAgeInput"
+        app:layout_constraintStart_toStartOf="@id/updateHeightInput"
+        app:layout_constraintEnd_toEndOf="@id/updateHeightInput"
+        />
+
+    <TextView
+        android:id="@+id/weightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textColor="@android:color/white"
+
+        android:text="Weight (kg)"
+        app:layout_constraintTop_toBottomOf="@id/updateGenderGroup"
+        app:layout_constraintBottom_toTopOf="@+id/updateAgeInput"
+        app:layout_constraintStart_toStartOf="@id/updateWeightInput"
+        app:layout_constraintEnd_toEndOf="@id/updateWeightInput"
+        />
+
+    <EditText
+        android:id="@+id/updateAgeInput"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/input_field_background"
+        android:inputType="number"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ageLabel" />
+
+    <EditText
+        android:id="@+id/updateHeightInput"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/input_field_background"
+        android:inputType="number"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toStartOf="@id/updateWeightInput"
+        app:layout_constraintStart_toEndOf="@id/updateAgeInput"
+        app:layout_constraintTop_toBottomOf="@id/heightLabel" />
+
+    <EditText
+        android:id="@+id/updateWeightInput"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/input_field_background"
+        android:inputType="number"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightLabel"
+        />
+    <TextView
+        android:id="@+id/currentActivityLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/activityLevelLabel"
+        app:layout_constraintBottom_toBottomOf="@id/activityLevelLabel"
+        />
+
+    <TextView
+        android:id="@+id/activityLevelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+
+        android:text="Activity Level - Current: "
+        app:layout_constraintTop_toBottomOf="@id/updateAgeInput"
+        app:layout_constraintBottom_toTopOf="@+id/updateActivityLevelGroup"
+        app:layout_constraintStart_toStartOf="@id/updateAgeInput"/>
+
+    <RadioGroup
+        android:id="@+id/updateActivityLevelGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activityLevelLabel"
+        >
+
+        <RadioButton
+            android:id="@+id/updateRadioLowActivity"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="3"
+            android:checked="true"
+            android:button="@null"
+            android:textColor="@color/darkmode_background"
+            android:textAllCaps="true"
+            android:onClick="updateActivityButtonClicked"
+            android:background="@drawable/radio_left_checked"
+            android:gravity="center"
+            android:text="Low" />
+
+        <RadioButton
+            android:id="@+id/updateRadioModerateActivity"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="3"
+            android:textColor="@android:color/white"
+            android:textAllCaps="true"
+            android:onClick="updateActivityButtonClicked"
+            android:background="@drawable/radio_middle_unchecked"
+            android:text="Moderate" />
+
+        <RadioButton
+            android:id="@+id/updateRadioHighActivity"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:layout_weight="3"
+            android:button="@null"
+            android:textColor="@android:color/white"
+            android:textAllCaps="true"
+            android:onClick="updateActivityButtonClicked"
+            android:background="@drawable/radio_right_unchecked"
+            android:text="High" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/updateDetailsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
+        android:text="update"
+        android:background="@drawable/login_register_button_bg"
+        app:layout_constraintEnd_toEndOf="@id/updateDetailsCard"
+        app:layout_constraintStart_toStartOf="@id/updateDetailsCard"
+        app:layout_constraintTop_toBottomOf="@id/updateDetailsCard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
