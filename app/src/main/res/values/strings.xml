@@ -6,10 +6,10 @@
     <string name="activityInfo">* <b>Low Activity:</b> Almost no exercise. Watch TV, play video games, sitting for long periods.\n\n<b>Moderate Activity:</b> Exercise 3-4 times a week. On your feet regularly. \n\n<b>Heavy Activity:</b> Exercise almost every day. Do intense workouts e.g sports, gym few times a week</string>
     <string name="userDetailsHeading">User Details</string>
     <string name="BMIDetailsHeading">Your BMI (Body Mass Index)</string>
-    <string name="underweightText">Underweight\nLess than 18.5</string>
-    <string name="healthyText">Healthy\n18.5-25</string>
-    <string name="overweightText">Overweight\n25-30</string>
-    <string name="obeseText">Obese\nMore than 30</string>
+    <string name="underweightText">Underweight\n(Less than 18.5)</string>
+    <string name="healthyText">Healthy\n(18.5-25)</string>
+    <string name="overweightText">Overweight\n(25-30)</string>
+    <string name="obeseText">Obese\n(More than 30)</string>
 
 
 </resources>

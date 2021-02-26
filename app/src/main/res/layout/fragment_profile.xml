@@ -289,7 +289,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/userDetailsHeading"
+                        android:id="@+id/userDetailsHeadingProfile"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:src="@drawable/card_heading"
@@ -315,9 +315,9 @@
                         android:layout_marginRight="15dp"
                         android:src="@drawable/ic_arrow_right"
                         android:tint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@id/userDetailsHeading"
-                        app:layout_constraintEnd_toEndOf="@id/userDetailsHeading"
-                        app:layout_constraintTop_toTopOf="@id/userDetailsHeading" />
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailsHeadingProfile"
+                        app:layout_constraintEnd_toEndOf="@id/userDetailsHeadingProfile"
+                        app:layout_constraintTop_toTopOf="@id/userDetailsHeadingProfile" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>

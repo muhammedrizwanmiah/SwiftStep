@@ -13,5 +13,6 @@
     <color name="yellow">#ffee58</color>
     <color name="green">#66bb6a</color>
     <color name="cardHeadingColor">#212121</color>
+    <color name="cardAccent">#4C4C4C</color>
 
 </resources>
