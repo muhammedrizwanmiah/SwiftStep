@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_update_details.*
+import kotlin.math.roundToInt
 
 class UpdateDetails : AppCompatActivity() {
 
@@ -108,7 +109,66 @@ class UpdateDetails : AppCompatActivity() {
             currentUSerDb?.child("weight")?.setValue(updateWeightInput.text.toString().toInt())
             currentUSerDb?.child("activitylevel")?.setValue(updateActivityLevelText.toString())
             updateBMI()
+            updateSteps()
         }
+    }
+
+    private fun updateSteps() {
+        val currentUser = auth.currentUser
+        val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
+
+        val updateGenderRadioButtonText = when (updateGenderGroup.checkedRadioButtonId) { //getting text value of gender radio button
+            R.id.updateRadioMaleBtn -> updateRadioMaleBtn.text
+            else -> updateRadioFemaleBtn.text
+        }
+
+        val updateActivityLevelText = when (updateActivityLevelGroup.checkedRadioButtonId){ //getting text value of selected activityLevelButton
+            R.id.updateRadioLowActivity -> updateRadioLowActivity.text
+            R.id.updateRadioModerateActivity -> updateRadioModerateActivity.text
+            R.id.updateRadioHighActivity -> updateRadioHighActivity.text
+            else -> null
+        }
+
+        val gender = updateGenderRadioButtonText.toString()
+        val activity = updateActivityLevelText.toString()
+        val age = updateAgeInput.text.toString().toInt()
+        val weight = updateWeightInput.text.toString().toInt()
+
+        val heightInMetres = updateHeightInput.text.toString().toDouble() / 100
+        val BMI = weight / (heightInMetres * heightInMetres)
+        val roundedBMI = BMI.roundToInt()
+
+        var steps = 2000 //steps has a base of 3000
+
+        if (age in 16..25){
+            steps += age * 100
+        } else if (age in 25..40){
+            steps += age * 60
+        }
+        else if (age in 41..60){
+            steps += age * 40
+        }
+        else if (age in 60..120){
+            steps += age * 20
+        }
+
+        if (gender == "Male"){
+            steps += 1000
+        } else {
+            steps +=1500
+        }
+
+        if(activity == "Low"){
+            steps += 2500
+        } else if (activity == "Moderate"){
+            steps += 2000
+        } else {
+            steps += 3000
+        }
+
+        steps += roundedBMI * 50
+
+        currentUSerDb?.child("stepgoal")?.setValue(steps)
     }
 
     private fun updateBMI() {

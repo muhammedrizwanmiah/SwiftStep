@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.passwordInput
 import kotlinx.android.synthetic.main.activity_registration.usernameInput
+import kotlin.math.roundToInt
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -122,6 +123,7 @@ class RegistrationActivity : AppCompatActivity() {
                         currentUSerDb?.child("weight")?.setValue(weightInput.text.toString().toInt())
                         currentUSerDb?.child("activitylevel")?.setValue(activityLevelText.toString())
                         setBMI()
+                        setStepGoal()
 
                         Toast.makeText(this@RegistrationActivity, "Registration Success. ", Toast.LENGTH_LONG).show()
                         finish()
@@ -131,6 +133,65 @@ class RegistrationActivity : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    private fun setStepGoal() {
+
+        val currentUser = auth.currentUser
+        val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
+
+        val genderRadioButtonText = when (registerGenderGroup.checkedRadioButtonId) { //getting text value of gender radio button
+            R.id.radioMaleBtn -> radioMaleBtn.text
+            else -> radioFemaleBtn.text
+        }
+
+        val activityLevelText = when (activityLevelGroup.checkedRadioButtonId){ //getting text value of selected activityLevelButton
+            R.id.radioLowActivity -> radioLowActivity.text
+            R.id.radioModerateActivity -> radioModerateActivity.text
+            R.id.radioHighActivity -> radioHighActivity.text
+            else -> null
+        }
+
+        val gender = genderRadioButtonText.toString()
+        val activity = activityLevelText.toString()
+        val age = ageInput.text.toString().toInt()
+        val weight = weightInput.text.toString().toInt()
+
+        val heightInMetres = heightInput.text.toString().toDouble() / 100
+        val BMI = weight / (heightInMetres * heightInMetres)
+        val roundedBMI = BMI.roundToInt()
+
+        var steps = 2000 //steps has a base of 3000
+
+        if (age in 16..25){
+            steps += age * 100
+        } else if (age in 25..40){
+            steps += age * 60
+        }
+        else if (age in 41..60){
+            steps += age * 40
+        }
+        else if (age in 60..120){
+            steps += age * 20
+        }
+
+        if (gender == "Male"){
+            steps += 1000
+        } else {
+            steps +=1500
+        }
+
+        if(activity == "Low"){
+            steps += 2500
+        } else if (activity == "Moderate"){
+            steps += 2000
+        } else {
+            steps += 3000
+        }
+
+        steps += roundedBMI * 50
+
+        currentUSerDb?.child("stepgoal")?.setValue(steps)
     }
 
     private fun setBMI() {
