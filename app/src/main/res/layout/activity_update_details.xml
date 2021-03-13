@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@id/updateProfileTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/updateDetailsButton"
-        android:tint="@color/cardHeadingColor"
+        android:tint="@color/cardMain"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/input_field_background" />
 

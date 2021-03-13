@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.RadioButton
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -110,6 +111,8 @@ class UpdateDetails : AppCompatActivity() {
             currentUSerDb?.child("activitylevel")?.setValue(updateActivityLevelText.toString())
             updateBMI()
             updateSteps()
+
+            Toast.makeText(this@UpdateDetails, "User details updated!", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -138,7 +141,7 @@ class UpdateDetails : AppCompatActivity() {
         val BMI = weight / (heightInMetres * heightInMetres)
         val roundedBMI = BMI.roundToInt()
 
-        var steps = 2000 //steps has a base of 3000
+        var steps = 2000 //steps has a base of 2000
 
         if (age in 16..25){
             steps += age * 100

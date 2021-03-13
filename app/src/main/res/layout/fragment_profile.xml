@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/input_field_background"
+                android:src="@drawable/card_body"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/emailInfo" />
 
@@ -99,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:tint="@color/cardMain"
                 android:src="@drawable/input_field_background"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/profileBackground" />

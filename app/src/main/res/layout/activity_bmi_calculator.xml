@@ -26,132 +26,163 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <ImageView
-        android:id="@+id/obeseClassIII"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/cardAccent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        <ImageView
+            android:id="@+id/bmiClassCardBG"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:tint="@color/cardMain"
+            android:src="@drawable/card_body"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculatorCardBG"
+            />
 
         <TextView
+            android:id="@+id/bmiObese3Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
             android:text="Obese Class III: More than 40"
-            app:layout_constraintStart_toStartOf="@id/obeseClassIII"
-            app:layout_constraintEnd_toEndOf="@id/obeseClassIII"
-            app:layout_constraintTop_toTopOf="@id/obeseClassIII"
-            app:layout_constraintBottom_toBottomOf="@id/obeseClassIII"/>
+            android:textColor="@color/red"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toEndOf="@id/obeseCircle"            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintBottom_toBottomOf="@id/bmiClassCardBG" />
 
-
-        <ImageView
-            android:id="@+id/obeseClassII"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/cardAccent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/obeseClassIII"
-            />
 
         <TextView
+            android:id="@+id/bmiObese2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
             android:text="Obese Class II: 35-40"
-            app:layout_constraintStart_toStartOf="@id/obeseClassII"
-            app:layout_constraintEnd_toEndOf="@id/obeseClassII"
-            app:layout_constraintTop_toTopOf="@id/obeseClassII"
-            app:layout_constraintBottom_toBottomOf="@id/obeseClassII"/>
-
-        <ImageView
-            android:id="@+id/obeseClassI"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/cardAccent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/obeseClassII"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textColor="@color/red"
+            app:layout_constraintStart_toEndOf="@id/obeseCircle"            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toBottomOf="@id/bmiObeseText"
+            app:layout_constraintBottom_toTopOf="@id/bmiObese3Text"
+            />
+
+        <TextView
+            android:id="@+id/bmiObeseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Obese Class I: 30-35"
-            app:layout_constraintStart_toStartOf="@id/obeseClassI"
-            app:layout_constraintEnd_toEndOf="@id/obeseClassI"
-            app:layout_constraintTop_toTopOf="@id/obeseClassI"
-            app:layout_constraintBottom_toBottomOf="@id/obeseClassI"/>
-
-        <ImageView
-            android:id="@+id/overweightClass"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/cardAccent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/obeseClassI"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toEndOf="@id/obeseCircle"
+            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toBottomOf="@id/bmiOverweightText"
+            app:layout_constraintBottom_toTopOf="@id/bmiObese2Text"
             />
 
         <TextView
+            android:id="@+id/bmiOverweightText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/orange"
             android:text="Overweight: 25-30"
-            app:layout_constraintStart_toStartOf="@id/overweightClass"
-            app:layout_constraintEnd_toEndOf="@id/overweightClass"
-            app:layout_constraintTop_toTopOf="@id/overweightClass"
-            app:layout_constraintBottom_toBottomOf="@id/overweightClass"/>
-
-        <ImageView
-            android:id="@+id/healthyClass"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/cardAccent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/overweightClass"
+            android:textColor="@color/orange"
+            app:layout_constraintStart_toEndOf="@id/overweightCircle"
+            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toBottomOf="@id/bmiHealthyText"
+            app:layout_constraintBottom_toTopOf="@id/bmiObeseText"
             />
 
         <TextView
+            android:id="@+id/bmiHealthyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/green"
             android:text="Healthy: 18.5-25"
-            app:layout_constraintStart_toStartOf="@id/healthyClass"
-            app:layout_constraintEnd_toEndOf="@id/healthyClass"
-            app:layout_constraintTop_toTopOf="@id/healthyClass"
-            app:layout_constraintBottom_toBottomOf="@id/healthyClass"/>
+            android:textColor="@color/green"
+            app:layout_constraintStart_toEndOf="@id/healthyCircle"
+            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toBottomOf="@id/bmiUnderweightText"
+            app:layout_constraintBottom_toTopOf="@id/bmiOverweightText"
+            />
 
+
+        <TextView
+            android:id="@+id/bmiUnderweightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Underweight: Less than 18.5"
+            android:textColor="@color/yellow"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@id/underweightCircle"
+            app:layout_constraintEnd_toEndOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toTopOf="@id/bmiClassCardBG"
+            />
 
         <ImageView
-            android:id="@+id/underweightClass"
+            android:id="@+id/underweightCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:tint="@color/yellow"
+            app:srcCompat="@drawable/white_circle"
+            app:layout_constraintStart_toStartOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toTopOf="@id/bmiUnderweightText"
+            app:layout_constraintBottom_toBottomOf="@id/bmiUnderweightText"
+            />
+
+        <ImageView
+            android:id="@+id/healthyCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:tint="@color/green"
+            app:srcCompat="@drawable/white_circle"
+            app:layout_constraintStart_toStartOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toTopOf="@id/bmiHealthyText"
+            app:layout_constraintBottom_toBottomOf="@id/bmiHealthyText"
+            />
+
+        <ImageView
+            android:id="@+id/overweightCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:tint="@color/orange"
+            app:srcCompat="@drawable/white_circle"
+            app:layout_constraintStart_toStartOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toTopOf="@id/bmiOverweightText"
+            app:layout_constraintBottom_toBottomOf="@id/bmiOverweightText"
+            />
+
+        <ImageView
+            android:id="@+id/obeseCircle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:tint="@color/red"
+            app:srcCompat="@drawable/white_circle"
+            app:layout_constraintStart_toStartOf="@id/bmiClassCardBG"
+            app:layout_constraintTop_toTopOf="@id/bmiObeseText"
+            app:layout_constraintBottom_toBottomOf="@id/bmiObeseText"
+            />
+
+        <ImageView
+            android:id="@+id/calculatorCardBG"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/cardAccent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="400dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/card_body"
+            app:layout_constraintBottom_toTopOf="@id/bmiClassCardBG"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/healthyClass"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bmiCalculatorTitle"
+
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/yellow"
-            android:text="Underweight: Less than 18.5"
-            app:layout_constraintStart_toStartOf="@id/underweightClass"
-            app:layout_constraintEnd_toEndOf="@id/underweightClass"
-            app:layout_constraintTop_toTopOf="@id/underweightClass"
-            app:layout_constraintBottom_toBottomOf="@id/underweightClass"/>
+            android:layout_marginBottom="5dp"
+            android:text="Weight (kg)"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/calcWeightInput"
+            app:layout_constraintEnd_toEndOf="@id/calcWeightInput"
+            app:layout_constraintStart_toStartOf="@id/calcWeightInput" />
 
         <EditText
             android:id="@+id/calcHeightInput"
@@ -197,17 +228,6 @@
             app:layout_constraintBottom_toTopOf="@id/calculateButton"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Weight (kg)"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@id/calcWeightInput"
-            app:layout_constraintEnd_toEndOf="@id/calcWeightInput"
-            app:layout_constraintBottom_toTopOf="@id/calcWeightInput"
-            />
-
         <Button
             android:id="@+id/calculateButton"
             android:layout_width="200dp"
@@ -217,7 +237,7 @@
             android:background="@drawable/login_register_button_bg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/underweightClass"
+            app:layout_constraintBottom_toBottomOf="@id/calculatorCardBG"
             />
 
         <ImageView
@@ -226,9 +246,9 @@
             android:layout_height="150dp"
             android:layout_margin="10dp"
             android:background="@drawable/white_circle"
-            android:backgroundTint="@color/navBarColor"
+            android:backgroundTint="@color/cardHeadingColor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bmiCalculatorTitle"
+            app:layout_constraintTop_toTopOf="@id/calculatorCardBG"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/calcHeightInputText"
             />
@@ -240,7 +260,8 @@
             android:text="BMI Calculator"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

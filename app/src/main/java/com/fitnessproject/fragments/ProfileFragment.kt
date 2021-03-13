@@ -52,6 +52,11 @@ class ProfileFragment : Fragment() {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                //will wait in the event that name has changed in the database, waits for update method to prevent NullPointerException
+                if (fullnameText == null){
+                    return
+                }
+
                 fullnameText.text = snapshot.child("firstname").value.toString() + " " + snapshot.child("lastname").value.toString()
                 genderText.text = "Gender: " + snapshot.child("gender").value.toString()
                 ageText.text = "Age: " + snapshot.child("age").value.toString() + " years old"
