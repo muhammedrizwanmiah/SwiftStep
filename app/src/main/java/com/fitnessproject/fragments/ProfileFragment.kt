@@ -92,6 +92,5 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
-
     }
 }

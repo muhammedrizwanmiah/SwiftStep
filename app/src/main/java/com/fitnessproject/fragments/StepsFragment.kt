@@ -1,12 +1,20 @@
 package com.fitnessproject.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 
 import com.fitnessproject.R
 import com.fitnessproject.bmiCalculator
@@ -18,11 +26,19 @@ import kotlinx.android.synthetic.main.fragment_steps.*
 /**
  * A simple [Fragment] subclass.
  */
-class StepsFragment : Fragment() {
+class StepsFragment : Fragment(), SensorEventListener {
 
     lateinit var auth: FirebaseAuth
     var databaseReference :  DatabaseReference? = null
     var database: FirebaseDatabase? = null
+
+    //sensor code
+
+    private var sensorManager: SensorManager? = null
+
+    private var running = false
+    private var totalSteps = 0f
+    private var previousTotalSteps = 0f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +46,7 @@ class StepsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_steps, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +55,10 @@ class StepsFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
-
+        //sensor code
+        sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        loadData()
+        resetSteps()
         loadPage()
     }
 
@@ -82,6 +102,65 @@ class StepsFragment : Fragment() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        running = true
+        val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+
+        if(stepSensor == null){
+            Toast.makeText(requireContext(), "there is no step sensor",
+                Toast.LENGTH_SHORT).show()}
+        else{
+            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
+        }
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if(running){
+            totalSteps = event!!.values[0]
+            val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            tvStepsTaken.text = ("$currentSteps")
+
+            circularProgressBar.apply{
+                setProgressWithAnimation(currentSteps.toFloat())
+            }
+        }
+    }
+
+    fun resetSteps() {
+        tvStepsTaken.setOnClickListener {
+            Toast.makeText(requireContext(), "Long tap to reset steps", Toast.LENGTH_SHORT).show()
+        }
+
+        tvStepsTaken.setOnLongClickListener {
+            previousTotalSteps = totalSteps
+            tvStepsTaken.text = 0.toString()
+            saveData()
+
+            true
+        }
+
+    }
+
+    private fun saveData() {
+        val sharedPreferences = requireContext().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putFloat("key1", previousTotalSteps)
+        editor.apply()
+    }
+
+    private fun loadData() {
+        val sharedPreferences = requireContext().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val savedNumber = sharedPreferences.getFloat("key1", 0f)
+        Log.d("StepsFragment", "$savedNumber")
+        previousTotalSteps = savedNumber
+
+    }
+
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
     }
 
 }
