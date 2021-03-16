@@ -40,13 +40,14 @@ class StepsFragment : Fragment(), SensorEventListener {
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
 
+    private var currentStepsInt = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_steps, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,6 +58,13 @@ class StepsFragment : Fragment(), SensorEventListener {
         databaseReference = database?.reference!!.child("profile")
         //sensor code
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        tvStepsTaken.text = currentStepsInt.toString()
+
+        circularProgressBar.apply{
+            setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
+        }
+
         loadData()
         resetSteps()
         loadPage()
@@ -121,12 +129,14 @@ class StepsFragment : Fragment(), SensorEventListener {
         if(running){
             totalSteps = event!!.values[0]
             val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
-            tvStepsTaken.text = ("$currentSteps")
+            tvStepsTaken.text = ("$currentStepsInt")
+            currentStepsInt = currentSteps.toString().toInt()
 
             circularProgressBar.apply{
-                setProgressWithAnimation(currentSteps.toFloat())
+                setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
             }
         }
+        saveData()
     }
 
     fun resetSteps() {
@@ -137,7 +147,10 @@ class StepsFragment : Fragment(), SensorEventListener {
         tvStepsTaken.setOnLongClickListener {
             previousTotalSteps = totalSteps
             tvStepsTaken.text = 0.toString()
-            saveData()
+            currentStepsInt = 0
+            circularProgressBar.apply{
+                setProgressWithAnimation(0f, 1500)
+            }
 
             true
         }
