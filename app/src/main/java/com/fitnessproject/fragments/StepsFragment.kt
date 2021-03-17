@@ -78,6 +78,9 @@ class StepsFragment : Fragment(), SensorEventListener {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                tvStepGoal.text = "/" + snapshot.child("stepgoal").value.toString()
+                circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+
                 yourBMItext.text = snapshot.child("BMI").value.toString()
 
                 yourHeightText.text = snapshot.child("height").value.toString() + " CM"
@@ -126,17 +129,20 @@ class StepsFragment : Fragment(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
+        if (tvStepsTaken == null){
+            return
+        }
+
         if(running){
             totalSteps = event!!.values[0]
             val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
-            tvStepsTaken.text = ("$currentStepsInt")
+            tvStepsTaken.text = ("$currentSteps")
             currentStepsInt = currentSteps.toString().toInt()
 
             circularProgressBar.apply{
                 setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
             }
         }
-        saveData()
     }
 
     fun resetSteps() {
@@ -151,7 +157,7 @@ class StepsFragment : Fragment(), SensorEventListener {
             circularProgressBar.apply{
                 setProgressWithAnimation(0f, 1500)
             }
-
+            saveData()
             true
         }
 
@@ -169,7 +175,6 @@ class StepsFragment : Fragment(), SensorEventListener {
         val savedNumber = sharedPreferences.getFloat("key1", 0f)
         Log.d("StepsFragment", "$savedNumber")
         previousTotalSteps = savedNumber
-
     }
 
 
