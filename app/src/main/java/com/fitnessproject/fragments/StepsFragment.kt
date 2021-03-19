@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_steps.*
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -42,6 +46,12 @@ class StepsFragment : Fragment(), SensorEventListener {
 
     private var currentStepsInt = 0
 
+    var distanceRan = 0.0
+
+    val sdf = SimpleDateFormat("dd/MM/yyyy")
+    var currentDate = sdf.format(Date())
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +69,7 @@ class StepsFragment : Fragment(), SensorEventListener {
         //sensor code
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
+        tvTime.text = "Time: " + "$currentDate"
         tvStepsTaken.text = currentStepsInt.toString()
 
         circularProgressBar.apply{
@@ -78,6 +89,17 @@ class StepsFragment : Fragment(), SensorEventListener {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                //calc stride length
+                val heightInCM = snapshot.child("height").value.toString().toDouble()
+                val strideLength = heightInCM * 0.43
+                val stepsInCM = (strideLength * tvStepsTaken.text.toString().toDouble()) / 100000
+                val distance = Math.round(stepsInCM * 100.0) / 100.0
+
+                tvDistance.text = "Distance " + distance.toString() + " km"
+
+                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
+                    return
+                }
                 tvStepGoal.text = "/" + snapshot.child("stepgoal").value.toString()
                 circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
 
@@ -113,6 +135,15 @@ class StepsFragment : Fragment(), SensorEventListener {
             startActivity(intent)
         }
 
+//        userDetailsHeadingSteps.setOnClickListener {
+//
+//            if (bottomRow.visibility == View.VISIBLE){
+//            bottomRow.visibility = View.GONE
+//            } else {
+//                bottomRow.visibility = View.VISIBLE
+//            }
+//        }
+
     }
 
     override fun onResume() {
@@ -129,6 +160,29 @@ class StepsFragment : Fragment(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
+
+        //check if date has changed
+        isDateChanged()
+
+        val user = auth.currentUser
+        val userreference = databaseReference?.child(user?.uid!!)
+
+        userreference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                //calc stride length
+                val heightInCM = snapshot.child("height").value.toString().toDouble()
+                val strideLength = heightInCM * 0.43
+                val stepsInCM = (strideLength * tvStepsTaken.text.toString().toDouble()) / 100000
+                val distance = Math.round(stepsInCM * 100.0) / 100.0
+
+                tvDistance.text = "Distance " + distance.toString() + " km"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
         if (tvStepsTaken == null){
             return
         }
@@ -143,6 +197,37 @@ class StepsFragment : Fragment(), SensorEventListener {
                 setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
             }
         }
+
+    }
+
+    private fun isDateChanged() {
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val dateComparison = sdf.format(Date())
+
+        val user = auth.currentUser
+        val userreference = databaseReference?.child(user?.uid!!)
+
+        userreference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(currentDate == dateComparison){
+                    return
+                }else{
+                    currentDate = dateComparison
+                    userreference?.child("step_data/$currentDate")?.setValue(tvStepsTaken.text.toString()) //save steps to firebase
+                    previousTotalSteps = totalSteps
+                    tvStepsTaken.text = 0.toString() //reset values to 0
+                    currentStepsInt = 0
+                    circularProgressBar.apply{
+                        setProgressWithAnimation(0f, 1500)
+                    } //do animation for reset
+                    saveData()
+                }
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     fun resetSteps() {
