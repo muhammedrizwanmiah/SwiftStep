@@ -8,6 +8,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,8 +49,8 @@ class StepsFragment : Fragment(), SensorEventListener {
 
     var distanceRan = 0.0
 
-    val sdf = SimpleDateFormat("dd/MM/yyyy")
-    var currentDate = sdf.format(Date())
+    val sdf = SimpleDateFormat("E")
+    var currentDay = sdf.format(Date())
 
 
     override fun onCreateView(
@@ -69,7 +70,7 @@ class StepsFragment : Fragment(), SensorEventListener {
         //sensor code
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-        tvTime.text = "Time: " + "$currentDate"
+        tvTime.text = "Day: " + "$currentDay"
         tvStepsTaken.text = currentStepsInt.toString()
 
         circularProgressBar.apply{
@@ -81,6 +82,49 @@ class StepsFragment : Fragment(), SensorEventListener {
         loadPage()
     }
 
+    private fun saveToDay() {
+
+        val user = auth.currentUser
+        val userreference = databaseReference?.child(user?.uid!!)
+
+        userreference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if(currentDay == "Mon"){
+                    userreference.child("step_data/Sun").setValue(currentStepsInt)
+                }
+                if(currentDay == "Tue"){
+                    userreference.child("step_data/Mon").setValue(currentStepsInt)
+                }
+                if(currentDay == "Wed"){
+                    userreference.child("step_data/Tue").setValue(currentStepsInt)
+                }
+                if(currentDay == "Thu"){
+                    userreference.child("step_data/Wed").setValue(currentStepsInt)
+                }
+                if(currentDay == "Fri"){
+                    userreference.child("step_data/Thu").setValue(currentStepsInt)
+                }
+                if(currentDay == "Sat"){
+                    userreference.child("step_data/Fri").setValue(currentStepsInt)
+                }
+                if(currentDay == "Sun"){
+                    userreference.child("step_data/Sat").setValue(currentStepsInt)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        Handler().postDelayed({
+            resetStepsAuto()
+        },500) //wait half a second before running method
+
+    }
+
     private fun loadPage() {
 
         val user = auth.currentUser
@@ -88,6 +132,12 @@ class StepsFragment : Fragment(), SensorEventListener {
 
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                tvTime.text = "Day: " + "$currentDay"
+
+                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
+                    return
+                }
 
                 //calc stride length
                 val heightInCM = snapshot.child("height").value.toString().toDouble()
@@ -97,9 +147,7 @@ class StepsFragment : Fragment(), SensorEventListener {
 
                 tvDistance.text = "Distance " + distance.toString() + " km"
 
-                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
-                    return
-                }
+
                 tvStepGoal.text = "/" + snapshot.child("stepgoal").value.toString()
                 circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
 
@@ -161,14 +209,22 @@ class StepsFragment : Fragment(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
 
-        //check if date has changed
-        isDateChanged()
+        val sdf1 = SimpleDateFormat("E")
+        var currentDay1 = sdf1.format(Date())
+
+        if(currentDay != currentDay1){ //checks if day has changed, calls saveToDay to save value
+            currentDay = currentDay1
+            saveToDay()
+        }
 
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
 
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
+                    return
+                }
                 //calc stride length
                 val heightInCM = snapshot.child("height").value.toString().toDouble()
                 val strideLength = heightInCM * 0.43
@@ -200,37 +256,7 @@ class StepsFragment : Fragment(), SensorEventListener {
 
     }
 
-    private fun isDateChanged() {
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
-        val dateComparison = sdf.format(Date())
-
-        val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
-
-        userreference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(currentDate == dateComparison){
-                    return
-                }else{
-                    currentDate = dateComparison
-                    userreference?.child("step_data/$currentDate")?.setValue(tvStepsTaken.text.toString()) //save steps to firebase
-                    previousTotalSteps = totalSteps
-                    tvStepsTaken.text = 0.toString() //reset values to 0
-                    currentStepsInt = 0
-                    circularProgressBar.apply{
-                        setProgressWithAnimation(0f, 1500)
-                    } //do animation for reset
-                    saveData()
-                }
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
-    fun resetSteps() {
+    private fun resetSteps() {
         tvStepsTaken.setOnClickListener {
             Toast.makeText(requireContext(), "Long tap to reset steps", Toast.LENGTH_SHORT).show()
         }
@@ -246,6 +272,18 @@ class StepsFragment : Fragment(), SensorEventListener {
             true
         }
 
+    }
+
+    private fun resetStepsAuto() {
+
+            previousTotalSteps = totalSteps
+            tvStepsTaken.text = 0.toString()
+            currentStepsInt = 0
+            circularProgressBar.apply{
+                setProgressWithAnimation(0f, 1500)
+            }
+            saveData()
+            true
     }
 
     private fun saveData() {
