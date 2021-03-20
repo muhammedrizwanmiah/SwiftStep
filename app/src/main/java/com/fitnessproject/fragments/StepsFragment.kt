@@ -122,7 +122,6 @@ class StepsFragment : Fragment(), SensorEventListener {
         Handler().postDelayed({
             resetStepsAuto()
         },500) //wait half a second before running method
-
     }
 
     private fun loadPage() {
