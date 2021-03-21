@@ -52,6 +52,40 @@ class StepsFragment : Fragment(), SensorEventListener {
     val sdf = SimpleDateFormat("E")
     var currentDay = sdf.format(Date())
 
+    //days counter
+    var totalStepsMon = 0
+    var countMon = 0
+
+    var totalStepsTue = 0
+    var countTue = 0
+
+    var totalStepsWed = 0
+    var countWed = 0
+
+    var totalStepsThu = 0
+    var countThu = 0
+
+    var totalStepsFri = 0
+    var countFri = 0
+
+    var totalStepsSat = 0
+    var countSat = 0
+
+    var totalStepsSun = 0
+    var countSun = 0
+
+    var totalDays = 0 //used to calculate average daily steps, daily calories
+
+    var totalCalMon = 0
+    var totalCalTue = 0
+    var totalCalWed = 0
+    var totalCalThu = 0
+    var totalCalFri = 0
+    var totalCalSat = 0
+    var totalCalSun = 0
+
+    //total steps all time
+    var totalStepsAllTime = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,24 +126,96 @@ class StepsFragment : Fragment(), SensorEventListener {
 
                 if(currentDay == "Mon"){
                     userreference.child("step_data/Sun").setValue(currentStepsInt)
+                    totalStepsSun += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countSun += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Sun").setValue(totalStepsSun)
+                        userreference.child("step_data/total_days").setValue(totalDays) //increases total day by 1
+                        userreference.child("step_data/count/count_for_Sun").setValue(countSun)
+                    },500)
                 }
                 if(currentDay == "Tue"){
                     userreference.child("step_data/Mon").setValue(currentStepsInt)
+                    totalStepsMon += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countMon += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Mon").setValue(totalStepsMon)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Mon").setValue(countMon)
+                    },500)
                 }
                 if(currentDay == "Wed"){
                     userreference.child("step_data/Tue").setValue(currentStepsInt)
+                    totalStepsTue += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countTue += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Tue").setValue(totalStepsTue)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Tue").setValue(countTue)
+                    },500)
                 }
                 if(currentDay == "Thu"){
                     userreference.child("step_data/Wed").setValue(currentStepsInt)
+                    totalStepsWed += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countWed += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Wed").setValue(totalStepsFri)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Wed").setValue(countWed)
+                    },500)
                 }
                 if(currentDay == "Fri"){
                     userreference.child("step_data/Thu").setValue(currentStepsInt)
+                    totalStepsThu += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countThu += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Thu").setValue(totalStepsFri)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Thu").setValue(countThu)
+                    },500)
+
                 }
                 if(currentDay == "Sat"){
                     userreference.child("step_data/Fri").setValue(currentStepsInt)
+                    totalStepsFri += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countFri += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Fri").setValue(totalStepsFri)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Fri").setValue(countFri)
+                    },500)
+
                 }
                 if(currentDay == "Sun"){
                     userreference.child("step_data/Sat").setValue(currentStepsInt)
+                    totalStepsSat += currentStepsInt
+                    totalStepsAllTime += currentStepsInt
+                    totalDays += 1
+                    countSat += 1
+
+                    Handler().postDelayed({
+                        userreference.child("step_data/day_counter/Sat").setValue(totalStepsSat)
+                        userreference.child("step_data/total_days").setValue(totalDays)
+                        userreference.child("step_data/count/count_for_Sat").setValue(countSat)
+                    },500)
                 }
 
             }
@@ -132,11 +238,11 @@ class StepsFragment : Fragment(), SensorEventListener {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                tvTime.text = "Day: " + "$currentDay"
-
-                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
+                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null || tvTime == null || tvCalories == null){
                     return
                 }
+
+                tvTime.text = "Day: " + "$currentDay"
 
                 //calc stride length
                 val heightInCM = snapshot.child("height").value.toString().toDouble()
@@ -144,18 +250,25 @@ class StepsFragment : Fragment(), SensorEventListener {
                 val stepsInCM = (strideLength * tvStepsTaken.text.toString().toDouble()) / 100000
                 val distance = Math.round(stepsInCM * 100.0) / 100.0
 
-                tvDistance.text = "Distance " + distance.toString() + " km"
+                val weightInKG = snapshot.child("weight").value.toString().toDouble()
+                val caloriesBurnedPerMile = 0.57 * (weightInKG * 2.2);
+                val stepCountMile = 160934.4 / strideLength;
+                val conversionFactor = caloriesBurnedPerMile / stepCountMile;
+                val caloriesBurned = tvStepsTaken.text.toString().toDouble() * conversionFactor;
+                val caloriesBurnedRounded = Math.round(caloriesBurned * 100.0) / 100.0
 
-
+                //text for elements on the screen
+                tvDistance.text = "Distance: " + distance.toString() + " km"
+                tvCalories.text = "Calories burnt: " + caloriesBurnedRounded.toString() + " cal"
                 tvStepGoal.text = "/" + snapshot.child("stepgoal").value.toString()
-                circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
-
-                yourBMItext.text = snapshot.child("BMI").value.toString()
 
                 yourHeightText.text = snapshot.child("height").value.toString() + " CM"
                 yourWeightText.text = snapshot.child("weight").value.toString() + " KG"
-                //logic for colour text changing based on BMI number
+                yourBMItext.text = snapshot.child("BMI").value.toString()
 
+                circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+
+                //logic for colour text changing based on BMI number
                 if (snapshot.child("BMI").value.toString().toDouble() >= 18.5 && snapshot.child("BMI").value.toString().toDouble() <= 25.0){
                     yourBMItext.setTextColor(Color.parseColor("#66bb6a")) //if healthy weight, set text to green
                 }
@@ -221,7 +334,7 @@ class StepsFragment : Fragment(), SensorEventListener {
 
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null){
+                if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null || tvTime == null || tvCalories == null){
                     return
                 }
                 //calc stride length
@@ -230,7 +343,15 @@ class StepsFragment : Fragment(), SensorEventListener {
                 val stepsInCM = (strideLength * tvStepsTaken.text.toString().toDouble()) / 100000
                 val distance = Math.round(stepsInCM * 100.0) / 100.0
 
-                tvDistance.text = "Distance " + distance.toString() + " km"
+                val weightInKG = snapshot.child("weight").value.toString().toDouble()
+                val caloriesBurnedPerMile = 0.57 * (weightInKG * 2.2);
+                val stepCountMile = 160934.4 / strideLength;
+                val conversionFactor = caloriesBurnedPerMile / stepCountMile;
+                val caloriesBurned = tvStepsTaken.text.toString().toDouble() * conversionFactor;
+                val caloriesBurnedRounded = Math.round(caloriesBurned * 100.0) / 100.0
+
+                tvCalories.text = "Calories burnt: " + caloriesBurnedRounded.toString() + " cal"
+                tvDistance.text = "Distance: " + distance.toString() + " km"
             }
 
             override fun onCancelled(error: DatabaseError) {
