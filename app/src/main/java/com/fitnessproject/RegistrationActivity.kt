@@ -124,6 +124,7 @@ class RegistrationActivity : AppCompatActivity() {
                         currentUSerDb?.child("activitylevel")?.setValue(activityLevelText.toString())
                         setBMI()
                         setStepGoal()
+                        setStepCalorieData()
 
                         Toast.makeText(this@RegistrationActivity, "Registration Success. ", Toast.LENGTH_LONG).show()
                         finish()
@@ -206,6 +207,68 @@ class RegistrationActivity : AppCompatActivity() {
         val roundedBMI = Math.round(BMI*100.0)/100.0
 
         currentUSerDb?.child("BMI")?.setValue(roundedBMI)
+    }
+
+    private fun setStepCalorieData() { //sets up necessary data fields in the DB for stats
+
+        val currentUser = auth.currentUser
+        val userreference = databaseReference?.child((currentUser?.uid!!))
+
+            userreference?.child("user_data/most_recent_per_day/Sun")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Sun")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Sun")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Sun")?.setValue(0) //adds to total distance for Sat
+
+            //all time stats for steps, calorie, distance
+            userreference?.child("user_data/all_time/steps")?.setValue(0) //adds to total steps for day
+            userreference?.child("user_data/all_time/calories")?.setValue(0) //adds to total calories for day
+            userreference?.child("user_data/all_time/distance")?.setValue(0)
+
+            userreference?.child("user_data/counter_for_day/Sun")?.setValue(0) //counter for Sat
+            userreference?.child("user_data/all_time_day_counter")?.setValue(0) //add to all time counter
+
+            userreference?.child("user_data/most_recent_per_day/Mon")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Mon")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Mon")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Mon")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Mon")?.setValue(0) //counter for Sat
+
+            userreference?.child("user_data/most_recent_per_day/Tue")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Tue")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Tue")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Tue")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Tue")?.setValue(0) //counter for Sat
+
+            userreference?.child("user_data/most_recent_per_day/Wed")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Wed")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Wed")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Wed")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Wed")?.setValue(0) //counter for Sat
+
+            userreference?.child("user_data/most_recent_per_day/Thu")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Thu")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Thu")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Thu")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Thu")?.setValue(0) //counter for Sat
+
+            userreference?.child("user_data/most_recent_per_day/Fri")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Fri")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Fri")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Fri")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Fri")?.setValue(0) //counter for Sat
+
+            userreference?.child("user_data/most_recent_per_day/Sat")?.setValue(0) //saves the stats for last saved day
+            userreference?.child("user_data/total_steps_by_day/Sat")?.setValue(0) //adds to total steps for Sat
+            userreference?.child("user_data/total_calories_by_day/Sat")?.setValue(0) //adds to total calories for Sat
+            userreference?.child("user_data/total_distance_by_day/Sat")?.setValue(0) //adds to total distance for Sat
+
+            userreference?.child("user_data/counter_for_day/Sat")?.setValue(0) //counter for Sat
+
     }
 
     fun activityButtonClicked(view: android.view.View) { //function is checking to see which radio button in activityLevel group is checked so it can write the value to database later

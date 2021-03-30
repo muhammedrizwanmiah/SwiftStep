@@ -37,6 +37,8 @@ class StepsFragment : Fragment(), SensorEventListener {
     var databaseReference :  DatabaseReference? = null
     var database: FirebaseDatabase? = null
 
+    var executed = false
+
     //sensor code
 
     private var sensorManager: SensorManager? = null
@@ -46,46 +48,15 @@ class StepsFragment : Fragment(), SensorEventListener {
     private var previousTotalSteps = 0f
 
     private var currentStepsInt = 0
+    private var currentCalories = 0.0
+    private var currentDistance = 0.0
 
     var distanceRan = 0.0
 
     val sdf = SimpleDateFormat("E")
     var currentDay = sdf.format(Date())
 
-    //days counter
-    var totalStepsMon = 0
-    var countMon = 0
-
-    var totalStepsTue = 0
-    var countTue = 0
-
-    var totalStepsWed = 0
-    var countWed = 0
-
-    var totalStepsThu = 0
-    var countThu = 0
-
-    var totalStepsFri = 0
-    var countFri = 0
-
-    var totalStepsSat = 0
-    var countSat = 0
-
-    var totalStepsSun = 0
-    var countSun = 0
-
-    var totalDays = 0 //used to calculate average daily steps, daily calories
-
-    var totalCalMon = 0
-    var totalCalTue = 0
-    var totalCalWed = 0
-    var totalCalThu = 0
-    var totalCalFri = 0
-    var totalCalSat = 0
-    var totalCalSun = 0
-
-    //total steps all time
-    var totalStepsAllTime = 0
+    var stepsForMon = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -124,98 +95,114 @@ class StepsFragment : Fragment(), SensorEventListener {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                if(currentDay == "Mon"){
-                    userreference.child("step_data/Sun").setValue(currentStepsInt)
-                    totalStepsSun += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countSun += 1
+                if(!executed && currentDay == "Mon"){
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Sun").setValue(totalStepsSun)
-                        userreference.child("step_data/total_days").setValue(totalDays) //increases total day by 1
-                        userreference.child("step_data/count/count_for_Sun").setValue(countSun)
-                    },500)
+                    executed = true
+
+                    userreference.child("user_data/most_recent_per_day/Sun").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Sun").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Sun").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Sun").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
+
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Sun").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Tue"){
-                    userreference.child("step_data/Mon").setValue(currentStepsInt)
-                    totalStepsMon += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countMon += 1
+                if(!executed && currentDay == "Tue"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Mon").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Mon").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Mon").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Mon").setValue(ServerValue.increment( currentDistance)) //adds to total distance for Sat
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Mon").setValue(totalStepsMon)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Mon").setValue(countMon)
-                    },500)
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(+ currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Mon").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Wed"){
-                    userreference.child("step_data/Tue").setValue(currentStepsInt)
-                    totalStepsTue += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countTue += 1
+                if(!executed && currentDay == "Wed"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Tue").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Tue").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Tue").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Tue").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Tue").setValue(totalStepsTue)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Tue").setValue(countTue)
-                    },500)
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Tue").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Thu"){
-                    userreference.child("step_data/Wed").setValue(currentStepsInt)
-                    totalStepsWed += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countWed += 1
+                if(!executed && currentDay == "Thu"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Wed").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Wed").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Wed").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Wed").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Wed").setValue(totalStepsFri)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Wed").setValue(countWed)
-                    },500)
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(+ currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Wed").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Fri"){
-                    userreference.child("step_data/Thu").setValue(currentStepsInt)
-                    totalStepsThu += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countThu += 1
+                if(!executed && currentDay == "Fri"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Thu").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Thu").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Thu").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Thu").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Thu").setValue(totalStepsFri)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Thu").setValue(countThu)
-                    },500)
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(+ currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
 
+                    userreference.child("user_data/counter_for_day/Thu").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Sat"){
-                    userreference.child("step_data/Fri").setValue(currentStepsInt)
-                    totalStepsFri += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countFri += 1
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Fri").setValue(totalStepsFri)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Fri").setValue(countFri)
-                    },500)
+                if(!executed && currentDay == "Sat"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Fri").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Fri").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Fri").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Fri").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
 
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Fri").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
-                if(currentDay == "Sun"){
-                    userreference.child("step_data/Sat").setValue(currentStepsInt)
-                    totalStepsSat += currentStepsInt
-                    totalStepsAllTime += currentStepsInt
-                    totalDays += 1
-                    countSat += 1
 
-                    Handler().postDelayed({
-                        userreference.child("step_data/day_counter/Sat").setValue(totalStepsSat)
-                        userreference.child("step_data/total_days").setValue(totalDays)
-                        userreference.child("step_data/count/count_for_Sat").setValue(countSat)
-                    },500)
+                if(!executed && currentDay == "Sun"){
+                    executed = true
+                    userreference.child("user_data/most_recent_per_day/Sat").setValue(currentStepsInt) //saves the stats for last saved day
+                    userreference.child("user_data/total_steps_by_day/Sat").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for Sat
+                    userreference.child("user_data/total_calories_by_day/Sat").setValue(ServerValue.increment(currentCalories)) //adds to total calories for Sat
+                    userreference.child("user_data/total_distance_by_day/Sat").setValue(ServerValue.increment(currentDistance)) //adds to total distance for Sat
+
+                    //all time stats for steps, calorie, distance
+                    userreference.child("user_data/all_time/steps").setValue(ServerValue.increment(currentStepsInt.toString().toDouble())) //adds to total steps for day
+                    userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
+                    userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
+
+                    userreference.child("user_data/counter_for_day/Sat").setValue(ServerValue.increment(1)) //counter for Sat
+                    userreference.child("user_data/all_time_day_counter").setValue(ServerValue.increment(1)) //add to all time counter
                 }
 
             }
@@ -224,7 +211,7 @@ class StepsFragment : Fragment(), SensorEventListener {
                 TODO("Not yet implemented")
             }
         })
-
+        executed = false
         Handler().postDelayed({
             resetStepsAuto()
         },500) //wait half a second before running method
@@ -337,6 +324,7 @@ class StepsFragment : Fragment(), SensorEventListener {
                 if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null || tvTime == null || tvCalories == null){
                     return
                 }
+                //calculate distance based on height and stride length
                 //calc stride length
                 val heightInCM = snapshot.child("height").value.toString().toDouble()
                 val strideLength = heightInCM * 0.43
@@ -352,6 +340,9 @@ class StepsFragment : Fragment(), SensorEventListener {
 
                 tvCalories.text = "Calories burnt: " + caloriesBurnedRounded.toString() + " cal"
                 tvDistance.text = "Distance: " + distance.toString() + " km"
+
+                currentCalories = caloriesBurnedRounded
+                currentDistance = distance
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -385,6 +376,9 @@ class StepsFragment : Fragment(), SensorEventListener {
             previousTotalSteps = totalSteps
             tvStepsTaken.text = 0.toString()
             currentStepsInt = 0
+            currentDistance = 0.0 //may not need
+            currentCalories =0.0 //may not need
+
             circularProgressBar.apply{
                 setProgressWithAnimation(0f, 1500)
             }
@@ -396,6 +390,8 @@ class StepsFragment : Fragment(), SensorEventListener {
 
     private fun resetStepsAuto() {
 
+        if(tvStepGoal == null || tvStepsTaken == null || tvDistance == null || tvTime == null || tvCalories == null){
+
             previousTotalSteps = totalSteps
             tvStepsTaken.text = 0.toString()
             currentStepsInt = 0
@@ -404,6 +400,19 @@ class StepsFragment : Fragment(), SensorEventListener {
             }
             saveData()
             true
+
+            return
+        } else {
+
+            previousTotalSteps = totalSteps
+            tvStepsTaken.text = 0.toString()
+            currentStepsInt = 0
+            circularProgressBar.apply {
+                setProgressWithAnimation(0f, 1500)
+            }
+            saveData()
+            true
+        }
     }
 
     private fun saveData() {
