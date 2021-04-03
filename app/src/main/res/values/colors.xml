@@ -15,4 +15,5 @@
     <color name="cardHeadingColor">#121212</color>
     <color name="cardAccent">#4C4C4C</color>
     <color name="cardMain">#252525</color>
+    <color name="recentDayText">@android:color/darker_gray</color>
 </resources>

@@ -82,6 +82,7 @@ class StepsFragment : Fragment(), SensorEventListener {
             setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
         }
 
+
         loadData()
         resetSteps()
         loadPage()
@@ -469,8 +470,8 @@ class StepsFragment : Fragment(), SensorEventListener {
                 //**************************************************
 
                 //text for elements on the screen
-                tvDistance.text = distance.toString() + " km"
-                tvCalories.text = caloriesBurnedRounded.toString() + " kcal"
+                tvDistance.text = distance.toString()
+                tvCalories.text = caloriesBurnedRounded.toString()
                 tvStepGoal.text = "/" + snapshot.child("stepgoal").value.toString()
 
                 yourHeightText.text = snapshot.child("height").value.toString() + " CM"
@@ -478,6 +479,43 @@ class StepsFragment : Fragment(), SensorEventListener {
                 yourBMItext.text = snapshot.child("BMI").value.toString()
 
                 circularProgressBar.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+
+                mondayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                mondayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Mon").value.toString().toFloat(), 1500)
+                }
+
+                tuesdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                tuesdayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Tue").value.toString().toFloat(), 1500)
+                }
+
+                wednesdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                wednesdayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Wed").value.toString().toFloat(), 1500)
+                }
+
+                thursdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                thursdayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Thu").value.toString().toFloat(), 1500)
+                }
+
+                fridayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                fridayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Fri").value.toString().toFloat(), 1500)
+                }
+
+                saturdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                saturdayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Sat").value.toString().toFloat(), 1500)
+                }
+
+                sundayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
+                sundayProgress.apply{
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Sun").value.toString().toFloat(), 1500)
+                }
+
+
 
                 //logic for colour text changing based on BMI number
                 if (snapshot.child("BMI").value.toString().toDouble() >= 18.5 && snapshot.child("BMI").value.toString().toDouble() <= 25.0){
@@ -562,8 +600,8 @@ class StepsFragment : Fragment(), SensorEventListener {
                 val caloriesBurned = tvStepsTaken.text.toString().toDouble() * conversionFactor;
                 val caloriesBurnedRounded = Math.round(caloriesBurned * 100.0) / 100.0
 
-                tvCalories.text = caloriesBurnedRounded.toString() + " kcal"
-                tvDistance.text = distance.toString() + " km"
+                tvCalories.text = caloriesBurnedRounded.toString()
+                tvDistance.text = distance.toString()
 
                 currentCalories = caloriesBurnedRounded
                 currentDistance = distance
