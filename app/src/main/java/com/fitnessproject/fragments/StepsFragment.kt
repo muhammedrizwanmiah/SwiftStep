@@ -485,9 +485,41 @@ class StepsFragment : Fragment(), SensorEventListener {
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Mon").value.toString().toFloat(), 1500)
                 }
 
+                var monPercentage = snapshot.child("user_data/most_recent_per_day/Tue").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                monCheck.visibility = (View.GONE)
+
+                if (monPercentage in 0.0..25.0){
+                    mondayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (monPercentage in 26.0..50.0){
+                    mondayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (monPercentage in 51.0..75.0){
+                    mondayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (monPercentage in 76.0..99.9){
+                    mondayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (monPercentage >= 100.0){
+                    mondayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    monCheck.visibility = (View.VISIBLE)
+                }
+
                 tuesdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
                 tuesdayProgress.apply{
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Tue").value.toString().toFloat(), 1500)
+                }
+
+                var tuePercentage = snapshot.child("user_data/most_recent_per_day/Tue").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                tueCheck.visibility = (View.GONE)
+
+                if (tuePercentage in 0.0..25.0){
+                    tuesdayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (tuePercentage in 26.0..50.0){
+                    tuesdayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (tuePercentage in 51.0..75.0){
+                    tuesdayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (tuePercentage in 76.0..99.9){
+                    tuesdayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (tuePercentage >= 100.0){
+                    tuesdayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    tueCheck.visibility = (View.VISIBLE)
                 }
 
                 wednesdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
@@ -495,14 +527,62 @@ class StepsFragment : Fragment(), SensorEventListener {
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Wed").value.toString().toFloat(), 1500)
                 }
 
+                var wedPercentage = snapshot.child("user_data/most_recent_per_day/Wed").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                wedCheck.visibility = (View.GONE)
+
+                if (wedPercentage in 0.0..25.0){
+                    wednesdayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (wedPercentage in 26.0..50.0){
+                    wednesdayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (wedPercentage in 51.0..75.0){
+                    wednesdayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (wedPercentage in 76.0..99.9){
+                    wednesdayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (wedPercentage >= 100.0){
+                    wednesdayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    wedCheck.visibility = (View.VISIBLE)
+                }
+
                 thursdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
                 thursdayProgress.apply{
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Thu").value.toString().toFloat(), 1500)
                 }
 
+                var thuPercentage = snapshot.child("user_data/most_recent_per_day/Thu").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                thuCheck.visibility = (View.GONE)
+
+                if (thuPercentage in 0.0..25.0){
+                    thursdayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (thuPercentage in 26.0..50.0){
+                    thursdayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (thuPercentage in 51.0..75.0){
+                    thursdayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (thuPercentage in 76.0..99.9){
+                    thursdayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (thuPercentage >= 100.0){
+                    thursdayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    thuCheck.visibility = (View.VISIBLE)
+                }
+
                 fridayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
                 fridayProgress.apply{
-                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Fri").value.toString().toFloat(), 1500)
+                    setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Sat").value.toString().toFloat(), 1500)
+                }
+
+                var friPercentage = snapshot.child("user_data/most_recent_per_day/Sat").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                friCheck.visibility = (View.GONE)
+
+                if (friPercentage in 0.0..25.0){
+                    fridayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (friPercentage in 26.0..50.0){
+                    fridayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (friPercentage in 51.0..75.0){
+                    fridayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (friPercentage in 76.0..99.9){
+                    fridayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (friPercentage >= 100.0){
+                    fridayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    friCheck.visibility = (View.VISIBLE)
                 }
 
                 saturdayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
@@ -510,10 +590,43 @@ class StepsFragment : Fragment(), SensorEventListener {
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Sat").value.toString().toFloat(), 1500)
                 }
 
+                var satPercentage = snapshot.child("user_data/most_recent_per_day/Sat").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                satCheck.visibility = (View.GONE)
+
+                if (satPercentage in 0.0..25.0){
+                    saturdayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (satPercentage in 26.0..50.0){
+                    saturdayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (satPercentage in 51.0..75.0){
+                    saturdayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (satPercentage in 76.0..99.9){
+                    saturdayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (satPercentage  >= 100.0){
+                    saturdayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    satCheck.visibility = (View.VISIBLE)
+                }
+
                 sundayProgress.progressMax = snapshot.child("stepgoal").value.toString().toFloat()
                 sundayProgress.apply{
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Sun").value.toString().toFloat(), 1500)
                 }
+
+                var sunPercentage = snapshot.child("user_data/most_recent_per_day/Sun").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                sunCheck.visibility = (View.GONE)
+
+                if (sunPercentage in 0.0..25.0){
+                    sundayProgress.progressBarColor = Color.parseColor("#ef5350") //set to red
+                } else if (sunPercentage in 26.0..50.0){
+                    sundayProgress.progressBarColor = Color.parseColor("#ffb300") //set to orange
+                } else if (sunPercentage in 51.0..75.0){
+                    sundayProgress.progressBarColor = Color.parseColor("#ffee58") //set to yellow
+                } else if (sunPercentage in 76.0..99.9){
+                    sundayProgress.progressBarColor = Color.parseColor("#66bb6a") //set to green
+                } else if (sunPercentage >= 100.0){
+                    sundayProgress.progressBarColor = Color.parseColor("#69f0ae") //set to green
+                    sunCheck.visibility = (View.VISIBLE)
+                }
+
 
 
 
