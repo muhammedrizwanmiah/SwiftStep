@@ -22,5 +22,3 @@ class ExampleInstrumentedTest {
         assertEquals("com.fitnessproject", appContext.packageName)
     }
 }
-
-

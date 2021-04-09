@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkmode_background"
+    tools:context=".fragments.StatsFragment">
+
+    <ScrollView
+        android:id="@+id/stepsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/chartBG"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="@drawable/card_body"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <Button
+                android:id="@+id/totalsButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="TOTAL"
+                android:textColor="@android:color/white"
+                android:background="@drawable/graph_button_grey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/avgsButton"
+                app:layout_constraintTop_toTopOf="@id/avgsButton"
+                app:layout_constraintBottom_toTopOf="@id/chartsLayout"
+                />
+
+            <Button
+                android:id="@+id/avgsButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="AVERAGE"
+                android:textColor="@android:color/white"
+                android:background="@drawable/graph_button_grey"
+                app:layout_constraintStart_toEndOf="@id/totalsButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/chartsLayout"
+                />
+
+            <Button
+                android:id="@+id/calButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/graph_button_grey"
+                android:text="CALORIES"
+                android:textColor="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@id/chartsLayout"
+                app:layout_constraintStart_toEndOf="@id/stepsButton"
+                app:layout_constraintEnd_toStartOf="@id/distButton"
+                app:layout_constraintBottom_toBottomOf="@id/chartBG"
+                />/>
+
+            <Button
+                android:id="@+id/distButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/graph_button_grey"
+                android:text="DISTANCE"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@id/calButton"
+                app:layout_constraintBottom_toBottomOf="@id/chartBG"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chartsLayout" /> />
+
+            <Button
+                android:id="@+id/stepsButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/graph_button_grey"
+                android:text="STEPS"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toStartOf="@id/calButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chartsLayout"
+                app:layout_constraintBottom_toBottomOf="@id/chartBG"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/chartsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalsButton"
+            >
+
+            <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartTotalSteps"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartTotalCal"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartTotalDist"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartAvgCal"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartAvgSteps"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChartAvgDist"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+            </com.github.mikephil.charting.charts.BarChart>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

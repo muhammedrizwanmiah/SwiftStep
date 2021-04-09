@@ -19,6 +19,9 @@ import androidx.core.content.ContextCompat.getSystemService
 
 import com.fitnessproject.R
 import com.fitnessproject.bmiCalculator
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -81,7 +84,6 @@ class StepsFragment : Fragment(), SensorEventListener {
         circularProgressBar.apply{
             setProgressWithAnimation(currentStepsInt.toFloat(), 1500)
         }
-
 
         loadData()
         resetSteps()
@@ -222,6 +224,8 @@ class StepsFragment : Fragment(), SensorEventListener {
 
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
+
+        userreference?.child("user_data/total_calories_by_day/Sun")?.setValue(7.93f)
 
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

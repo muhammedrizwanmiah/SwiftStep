@@ -232,7 +232,6 @@ class UpdateDetails : AppCompatActivity() {
                         updateRadioHighActivity.setTextColor(Color.parseColor("#FFFFFFFF")) //android white color
 
 
-
                     }
                 R.id.updateRadioModerateActivity ->
                     if (checked) {

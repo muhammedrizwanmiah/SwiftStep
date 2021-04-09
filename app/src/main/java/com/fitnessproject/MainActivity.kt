@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fitnessproject.fragments.ProfileFragment
+import com.fitnessproject.fragments.StatsFragment
 import com.fitnessproject.fragments.StepsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val profileFragment = ProfileFragment()
         val stepsFragment = StepsFragment()
+        val statsFragment = StatsFragment()
 
         makeCurrentFragment(profileFragment)
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.navigation_profile -> makeCurrentFragment(profileFragment)
                 R.id.navigation_steps -> makeCurrentFragment(stepsFragment)
+                R.id.navigation_stats -> makeCurrentFragment(statsFragment)
             }
             true
         }
