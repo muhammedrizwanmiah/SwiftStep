@@ -46,9 +46,62 @@ class StatsFragment : Fragment() {
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
 
+        statsLoadPage()
         setBarChart()
         loadStats()
         graphButtonClicked()
+    }
+
+    private fun statsLoadPage() {
+
+        val user = auth.currentUser
+        val userreference = databaseReference?.child(user?.uid!!)
+
+        userreference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                val allTimeSteps = snapshot.child("user_data/total_steps_by_day/Mon").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Tue").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Wed").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Thu").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Fri").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Sat").value.toString().toInt() +
+                        snapshot.child("user_data/total_steps_by_day/Sun").value.toString().toInt()
+
+                val allTimeCal = snapshot.child("user_data/total_calories_by_day/Mon").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Tue").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Wed").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Thu").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Fri").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Sat").value.toString().toDouble() +
+                        snapshot.child("user_data/total_calories_by_day/Sun").value.toString().toDouble()
+
+                val allTimeDist = snapshot.child("user_data/total_distance_by_day/Mon").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Tue").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Wed").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Thu").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Fri").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Sat").value.toString().toDouble() +
+                        snapshot.child("user_data/total_distance_by_day/Sun").value.toString().toDouble()
+
+
+                val roundedCal = Math.round(allTimeCal * 100.0)/100.0
+                val roundedDist = Math.round(allTimeDist * 100.0)/100.0
+
+
+                if(atStepsText == null || atCalText == null || atDistText == null){
+                    return
+                }
+                atStepsText.text = allTimeSteps.toString()
+                atCalText.text = roundedCal.toString()
+                atDistText.text = roundedDist.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     private fun loadStats() {
@@ -254,11 +307,19 @@ class StatsFragment : Fragment() {
                 labels.add("SAT")
                 labels.add("SUN")
                 val dataTotalCal = BarData(labels, barDataSetTotalCal)
-                barChartTotalCal.data = dataTotalCal // set the data and list of labels into chart
+
+                if (barChartTotalCal == null){
+                    return
+                }
+                else {
+                    barChartTotalCal.data =
+                        dataTotalCal // set the data and list of labels into chart
+                }
 
                 barChartTotalCal.setDescription("")  // set the description
 
                 //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
+
                 barDataSetTotalCal.color = resources.getColor(R.color.colorAccent)
                 barChartTotalCal.axisRight.setDrawLabels(false)
                 barChartTotalCal.axisLeft.setDrawGridLines(false);
@@ -267,7 +328,7 @@ class StatsFragment : Fragment() {
                 barChartTotalCal.axisRight.setDrawAxisLine(false)
                 barChartTotalCal.axisLeft.setDrawLabels(false);
                 barChartTotalCal.xAxis.setDrawGridLines(false);
-                barChartTotalCal.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartTotalCal.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartTotalCal.xAxis.setDrawAxisLine(false);
                 barChartTotalCal.animateY(3000)
 
@@ -340,7 +401,7 @@ class StatsFragment : Fragment() {
                 barChartTotalSteps.axisRight.setDrawAxisLine(false)
                 barChartTotalSteps.axisLeft.setDrawLabels(false);
                 barChartTotalSteps.xAxis.setDrawGridLines(false);
-                barChartTotalSteps.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartTotalSteps.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartTotalSteps.xAxis.setDrawAxisLine(false);
                 barChartTotalSteps.animateY(3000)
 
@@ -412,16 +473,16 @@ class StatsFragment : Fragment() {
                 barChartTotalDist.axisRight.setDrawAxisLine(false)
                 barChartTotalDist.axisLeft.setDrawLabels(false);
                 barChartTotalDist.xAxis.setDrawGridLines(false);
-                barChartTotalDist.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartTotalDist.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartTotalDist.xAxis.setDrawAxisLine(false);
 
-                barChartTotalDist.legend.isEnabled = false;
-                barChartTotalCal.legend.isEnabled = false;
-                barChartTotalSteps.legend.isEnabled = false;
-
-                barChartAvgDist.legend.isEnabled = false;
-                barChartAvgCal.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
+//                barChartTotalDist.legend.isEnabled = false;
+//                barChartTotalCal.legend.isEnabled = false;
+//                barChartTotalSteps.legend.isEnabled = false;
+//
+//                barChartAvgDist.legend.isEnabled = false;
+//                barChartAvgCal.legend.isEnabled = false;
+//                barChartAvgSteps.legend.isEnabled = false;
 
                 barChartTotalDist.animateY(3000)
 
@@ -655,12 +716,8 @@ class StatsFragment : Fragment() {
                 barChartAvgCal.axisRight.setDrawAxisLine(false)
                 barChartAvgCal.axisLeft.setDrawLabels(false);
                 barChartAvgCal.xAxis.setDrawGridLines(false);
-                barChartAvgCal.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartAvgCal.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartAvgCal.xAxis.setDrawAxisLine(false);
-
-                barChartAvgCal.legend.isEnabled = false;
-                barChartAvgCal.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
 
                 barChartAvgCal.animateY(3000)
 
@@ -696,16 +753,8 @@ class StatsFragment : Fragment() {
                 barChartAvgSteps.axisRight.setDrawAxisLine(false)
                 barChartAvgSteps.axisLeft.setDrawLabels(false);
                 barChartAvgSteps.xAxis.setDrawGridLines(false);
-                barChartAvgSteps.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartAvgSteps.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartAvgSteps.xAxis.setDrawAxisLine(false);
-
-                barChartAvgSteps.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
-
-                barChartAvgSteps.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
 
                 barChartAvgSteps.animateY(3000)
 
@@ -740,12 +789,12 @@ class StatsFragment : Fragment() {
                 barChartAvgDist.axisRight.setDrawAxisLine(false)
                 barChartAvgDist.axisLeft.setDrawLabels(false);
                 barChartAvgDist.xAxis.setDrawGridLines(false);
-                barChartAvgDist.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE)
+                barChartAvgDist.xAxis.position = XAxis.XAxisPosition.BOTTOM
                 barChartAvgDist.xAxis.setDrawAxisLine(false);
 
-                barChartAvgDist.legend.isEnabled = false;
-                barChartAvgCal.legend.isEnabled = false;
-                barChartAvgSteps.legend.isEnabled = false;
+                barChartTotalCal.legend.isEnabled = false;
+                barChartTotalSteps.legend.isEnabled = false;
+                barChartTotalDist.legend.isEnabled = false;
 
                 barChartAvgDist.legend.isEnabled = false;
                 barChartAvgCal.legend.isEnabled = false;
@@ -758,6 +807,15 @@ class StatsFragment : Fragment() {
 
                 barChartAvgDist.xAxis.textSize = 15f
                 barChartAvgDist.xAxis.textColor = Color.parseColor("#FFFFFFFF")
+
+                barChartTotalCal.extraBottomOffset = 5f
+                barChartTotalCal.extraBottomOffset = 5f
+                barChartTotalSteps.extraBottomOffset = 5f
+                barChartTotalDist.extraBottomOffset = 5f
+
+                barChartAvgDist.extraBottomOffset = 5f
+                barChartAvgCal.extraBottomOffset = 5f
+                barChartAvgSteps.extraBottomOffset = 5f
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")

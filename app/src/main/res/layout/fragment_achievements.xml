@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/achievementLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkmode_background"
+    tools:context=".fragments.StatsFragment">
+
+    <ScrollView
+        android:id="@+id/achievementScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/achievementTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:text="Achievements"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/AStepsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/achievementTitle"
+            >
+
+            <ImageView
+                android:id="@+id/AStepsBG"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/card_body"
+                android:tint="@color/cardMain"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/AStepsHeadingBG"
+                />
+
+            <ImageView
+                android:id="@+id/AStepsHeadingBG"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/card_heading"
+                android:tint="@color/cardHeadingColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Steps"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/AStepsHeadingBG"
+                app:layout_constraintStart_toStartOf="@id/AStepsHeadingBG"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/steps3k"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/steps3ku"
+                app:layout_constraintEnd_toStartOf="@+id/steps10k"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/steps10k"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/steps10ku"
+                app:layout_constraintEnd_toStartOf="@+id/steps20k"
+                app:layout_constraintStart_toEndOf="@id/steps3k"
+                app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/steps20k"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/steps20ku"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/steps10k"
+                app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ACaloriesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/AStepsLayout"
+                >
+
+                <ImageView
+                    android:id="@+id/ACaloriesBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/card_body"
+                    android:tint="@color/cardMain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ACaloriesHeadingBG"
+                    />
+
+                <ImageView
+                    android:id="@+id/ACaloriesHeadingBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/card_heading"
+                    android:tint="@color/cardHeadingColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Calories"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintStart_toStartOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/cal100"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/calories100u"
+                    app:layout_constraintEnd_toStartOf="@+id/cal300"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/cal300"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/calories300u"
+                    app:layout_constraintEnd_toStartOf="@+id/cal500"
+                    app:layout_constraintStart_toEndOf="@id/cal100"
+                    app:layout_constraintTop_toBottomOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageView
+                    android:id="@+id/cal500"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/calories500u"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cal300"
+                    app:layout_constraintTop_toBottomOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ADistanceLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ACaloriesLayout"
+                >
+
+                <ImageView
+                    android:id="@+id/ADistanceBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/card_body"
+                    android:tint="@color/cardMain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ADistanceHeadingBG"
+                    />
+
+                <ImageView
+                    android:id="@+id/ADistanceHeadingBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/card_heading"
+                    android:tint="@color/cardHeadingColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Distance"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintStart_toStartOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/distance5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/distance5u"
+                    app:layout_constraintEnd_toStartOf="@+id/distance10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/distance10"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/distance10u"
+                    app:layout_constraintEnd_toStartOf="@+id/distance20"
+                    app:layout_constraintStart_toEndOf="@id/distance5"
+                    app:layout_constraintTop_toBottomOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageView
+                    android:id="@+id/distance20"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/distance20u"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/distance10"
+                    app:layout_constraintTop_toBottomOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ADaysLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ADistanceLayout"
+                >
+
+                <ImageView
+                    android:id="@+id/ADaysBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/card_body"
+                    android:tint="@color/cardMain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ADaysHeadingBG"
+                    />
+
+                <ImageView
+                    android:id="@+id/ADaysHeadingBG"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/card_heading"
+                    android:tint="@color/cardHeadingColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Days"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/ADaysHeadingBG"
+                    app:layout_constraintStart_toStartOf="@id/ADaysHeadingBG"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/days3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/days3u"
+                    app:layout_constraintEnd_toStartOf="@+id/days7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ADaysHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/days7"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/days7u"
+                    app:layout_constraintEnd_toStartOf="@+id/days14"
+                    app:layout_constraintStart_toEndOf="@id/days3"
+                    app:layout_constraintTop_toBottomOf="@id/ADaysHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageView
+                    android:id="@+id/days14"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/days14u"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/days7"
+                    app:layout_constraintTop_toBottomOf="@id/ADaysHeadingBG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

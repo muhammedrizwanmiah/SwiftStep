@@ -24,15 +24,223 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/statsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/allTimeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statsTitle"
+            >
+
             <ImageView
-                android:id="@+id/chartBG"
+                android:id="@+id/allTimeBG"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:background="@drawable/card_body"
+                android:layout_height="230dp"
+                android:src="@drawable/card_body"
+                android:tint="@color/cardMain"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/allTimeHeadingBG"
+                />
+
+            <ImageView
+                android:id="@+id/allTimeHeadingBG"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/card_heading"
+                android:tint="@color/cardHeadingColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Totals"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/allTimeHeadingBG"
+                app:layout_constraintStart_toStartOf="@id/allTimeHeadingBG"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/atStepsIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_footsteps"
+                android:tint="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@id/atStepsText"
+                app:layout_constraintEnd_toStartOf="@id/atCalIcon"
+                app:layout_constraintHorizontal_bias="0.307"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/allTimeHeadingBG" />
+
+            <TextView
+                android:id="@+id/atStepsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_body"
+                android:backgroundTint="@color/cardAccent"
+                android:textSize="20sp"
+                android:text=""
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@id/statsTvStepsTaken"
+                app:layout_constraintStart_toStartOf="@id/atStepsIcon"
+                app:layout_constraintEnd_toEndOf="@id/atStepsIcon"
+                app:layout_constraintTop_toBottomOf="@id/atStepsIcon" />
+
+            <TextView
+                android:id="@+id/statsTvStepsTaken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="steps taken"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/allTimeBG"
+                app:layout_constraintStart_toStartOf="@id/atStepsIcon"
+                app:layout_constraintEnd_toEndOf="@id/atStepsIcon"
+                app:layout_constraintTop_toBottomOf="@id/atStepsText" />
+
+            <ImageView
+                android:id="@+id/atCalIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_flame"
+                android:tint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/atStepsIcon"
+                app:layout_constraintEnd_toStartOf="@id/atDistIcon"
+                app:layout_constraintHorizontal_bias="0.733"
+                app:layout_constraintStart_toEndOf="@+id/atStepsIcon"
+                app:layout_constraintTop_toBottomOf="@id/allTimeHeadingBG"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/atCalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_body"
+                android:backgroundTint="@color/cardAccent"
+                android:textSize="20sp"
+                android:text=""
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@id/statsCalBurnt"
+                app:layout_constraintStart_toStartOf="@id/atCalIcon"
+                app:layout_constraintEnd_toEndOf="@id/atCalIcon"
+                app:layout_constraintTop_toBottomOf="@id/atStepsIcon" />
+
+            <TextView
+                android:id="@+id/statsCalBurnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="calories burnt"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/allTimeBG"
+                app:layout_constraintStart_toStartOf="@id/atCalIcon"
+                app:layout_constraintEnd_toEndOf="@id/atCalIcon"
+                app:layout_constraintTop_toBottomOf="@id/atCalText" />
+
+            <ImageView
+                android:id="@+id/atDistIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_fi_sr_marker"
+                android:tint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/atCalIcon"
+                app:layout_constraintEnd_toEndOf="@+id/allTimeBG"
+                app:layout_constraintHorizontal_bias="0.917"
+                app:layout_constraintStart_toEndOf="@+id/atCalIcon"
+                app:layout_constraintTop_toBottomOf="@id/allTimeHeadingBG"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/atDistText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_body"
+                android:backgroundTint="@color/cardAccent"
+                android:textSize="20sp"
+                android:text=""
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@id/statsDistWalked"
+                app:layout_constraintStart_toStartOf="@id/atDistIcon"
+                app:layout_constraintEnd_toEndOf="@id/atDistIcon"
+                app:layout_constraintTop_toBottomOf="@id/atDistIcon" />
+
+            <TextView
+                android:id="@+id/statsDistWalked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="km walked"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/allTimeBG"
+                app:layout_constraintStart_toStartOf="@id/atDistIcon"
+                app:layout_constraintEnd_toEndOf="@id/atDistIcon"
+                app:layout_constraintTop_toBottomOf="@id/atDistText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statsByDayLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/allTimeLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/chartBG"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:background="@drawable/card_body"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/chartHeadingBG"
+                />
+
+            <ImageView
+                android:id="@+id/chartHeadingBG"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/card_heading"
+                android:tint="@color/cardHeadingColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/chartBG"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Stats By Day"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/chartHeadingBG"
+                app:layout_constraintStart_toStartOf="@id/chartHeadingBG"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/totalsButton"
@@ -56,7 +264,7 @@
                 android:background="@drawable/graph_button_grey"
                 app:layout_constraintStart_toEndOf="@id/totalsButton"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chartHeadingBG"
                 app:layout_constraintBottom_toTopOf="@id/chartsLayout"
                 />
 
@@ -110,7 +318,7 @@
             <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChartTotalSteps"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +329,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChartTotalCal"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +339,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChartTotalDist"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +349,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChartAvgCal"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +359,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChartAvgSteps"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +369,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChartAvgDist"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="320dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,6 +377,7 @@
                 >
 
             </com.github.mikephil.charting.charts.BarChart>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

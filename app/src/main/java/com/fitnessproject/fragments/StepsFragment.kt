@@ -123,7 +123,7 @@ class StepsFragment : Fragment(), SensorEventListener {
                     userreference.child("user_data/total_distance_by_day/Mon").setValue(ServerValue.increment( currentDistance)) //adds to total distance for Sat
 
                     //all time stats for steps, calorie, distance
-                    userreference.child("user_data/all_time/steps").setValue(+ currentStepsInt) //adds to total steps for day
+                    userreference.child("user_data/all_time/steps").setValue(currentStepsInt) //adds to total steps for day
                     userreference.child("user_data/all_time/calories").setValue(ServerValue.increment(currentCalories)) //adds to total calories for day
                     userreference.child("user_data/all_time/distance").setValue(ServerValue.increment(currentDistance))
 
@@ -489,7 +489,7 @@ class StepsFragment : Fragment(), SensorEventListener {
                     setProgressWithAnimation(snapshot.child("user_data/most_recent_per_day/Mon").value.toString().toFloat(), 1500)
                 }
 
-                var monPercentage = snapshot.child("user_data/most_recent_per_day/Tue").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
+                var monPercentage = snapshot.child("user_data/most_recent_per_day/Mon").value.toString().toDouble() / snapshot.child("stepgoal").value.toString().toDouble() * 100
                 monCheck.visibility = (View.GONE)
 
                 if (monPercentage in 0.0..25.0){

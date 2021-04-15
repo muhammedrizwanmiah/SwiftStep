@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.fitnessproject.fragments.AchievementsFragment
 import com.fitnessproject.fragments.ProfileFragment
 import com.fitnessproject.fragments.StatsFragment
 import com.fitnessproject.fragments.StepsFragment
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val profileFragment = ProfileFragment()
         val stepsFragment = StepsFragment()
         val statsFragment = StatsFragment()
+        val achievementsFragment = AchievementsFragment()
 
         makeCurrentFragment(profileFragment)
 
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_profile -> makeCurrentFragment(profileFragment)
                 R.id.navigation_steps -> makeCurrentFragment(stepsFragment)
                 R.id.navigation_stats -> makeCurrentFragment(statsFragment)
+                R.id.navigation_achievements -> makeCurrentFragment(achievementsFragment)
             }
             true
         }
