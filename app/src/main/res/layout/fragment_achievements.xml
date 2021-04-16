@@ -68,6 +68,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
+            <ImageView
+                android:id="@+id/stepsArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_arrow_right"
+                android:tint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@id/AStepsHeadingBG"
+                app:layout_constraintEnd_toEndOf="@id/AStepsHeadingBG"
+                app:layout_constraintTop_toTopOf="@id/AStepsHeadingBG" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -144,6 +156,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     />
 
+                <ImageView
+                    android:id="@+id/caloriesArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:tint="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintEnd_toEndOf="@id/ACaloriesHeadingBG"
+                    app:layout_constraintTop_toTopOf="@id/ACaloriesHeadingBG" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,6 +243,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     />
 
+                <ImageView
+                    android:id="@+id/distanceArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:tint="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintEnd_toEndOf="@id/ADistanceHeadingBG"
+                    app:layout_constraintTop_toTopOf="@id/ADistanceHeadingBG" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -293,6 +329,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     />
+
+                <ImageView
+                    android:id="@+id/daysArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:tint="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@id/ADaysHeadingBG"
+                    app:layout_constraintEnd_toEndOf="@id/ADaysHeadingBG"
+                    app:layout_constraintTop_toTopOf="@id/ADaysHeadingBG" />
+
 
                 <TextView
                     android:layout_width="wrap_content"

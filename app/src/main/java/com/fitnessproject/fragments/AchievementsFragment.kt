@@ -1,14 +1,17 @@
 package com.fitnessproject.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import com.fitnessproject.*
 import com.fitnessproject.R
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_achievements.*
 
 class AchievementsFragment : Fragment() {
 
@@ -48,6 +51,31 @@ class AchievementsFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+
+        AStepsHeadingBG.setOnClickListener {
+            requireActivity()
+            val intent = Intent (requireActivity(), StepsBadges::class.java)
+            startActivity(intent)
+        }
+
+        ACaloriesHeadingBG.setOnClickListener {
+            requireActivity()
+            val intent = Intent (requireActivity(), CaloriesBadges::class.java)
+            startActivity(intent)
+        }
+
+        ADistanceHeadingBG.setOnClickListener {
+            requireActivity()
+            val intent = Intent (requireActivity(), DistanceBadges::class.java)
+            startActivity(intent)
+        }
+
+        ADaysHeadingBG.setOnClickListener {
+            requireActivity()
+            val intent = Intent (requireActivity(), DaysBadges::class.java)
+            startActivity(intent)
+        }
+
     }
 
 }

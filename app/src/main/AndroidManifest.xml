@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.fitnessproject">
+    package="com.fitnessproject" >
 
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
@@ -11,12 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".bmiCalculator"></activity>
+        android:theme="@style/AppTheme" >
+        <activity android:name=".DaysBadges" >
+        </activity>
+        <activity android:name=".DistanceBadges" />
+        <activity android:name=".CaloriesBadges" />
+        <activity android:name=".StepsBadges" />
+        <activity android:name=".bmiCalculator" />
         <activity android:name=".UpdateDetails" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
