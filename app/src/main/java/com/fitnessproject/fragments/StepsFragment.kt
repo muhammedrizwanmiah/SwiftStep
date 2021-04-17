@@ -225,8 +225,6 @@ class StepsFragment : Fragment(), SensorEventListener {
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
 
-        userreference?.child("user_data/total_calories_by_day/Sun")?.setValue(7.93f)
-
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 

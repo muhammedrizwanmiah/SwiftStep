@@ -41,8 +41,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
+                android:background="@drawable/card_achievement_checked"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/stepsBadgeTitle"
@@ -52,7 +51,7 @@
                     android:id="@+id/steps3k"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/steps3ku"
+                    android:src="@drawable/steps3k"
                     android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -68,20 +67,21 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/steps3kInfoBG"
                     >
-                <ProgressBar
-                    android:id="@+id/steps3kProgress"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="15dp"
-                    android:progressBackgroundTint="@android:color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/steps3kProgressText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
+
+                    <ProgressBar
+                        android:id="@+id/steps3kProgress"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="50dp"
+                        android:max="3000"
+                        android:progressBackgroundTint="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/steps3kProgressText" />
 
                 <TextView
                     android:id="@+id/steps3kProgressText"
@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/cardHeadingColor"
+                    android:background="@color/colorAccent"
                     app:layout_constraintTop_toBottomOf="@id/steps3k"
                     />
 
@@ -121,7 +121,43 @@
                     android:textAllCaps="true"
                     android:gravity="center_horizontal" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps3kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps3kInfoBG"
+                    >
 
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/steps3kCircularProgress"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:cpb_background_progressbar_color="@color/colorAccent"
+                    app:cpb_background_progressbar_width="3dp"
+                    app:cpb_progress_direction="to_right"
+                    app:cpb_progressbar_color="@color/colorAccent"
+                    app:cpb_progressbar_width="5dp"
+                    app:cpb_round_border="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/steps3kCheck"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_check"
+                    android:tint="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@+id/steps3kCircularProgress"
+                    app:layout_constraintEnd_toEndOf="@+id/steps3kCircularProgress"
+                    app:layout_constraintStart_toStartOf="@+id/steps3kCircularProgress"
+                    app:layout_constraintTop_toTopOf="@+id/steps3kCircularProgress" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -132,11 +168,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/steps3kLayout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps10kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps10kInfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/steps10kCircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/steps10kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/steps10kCircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/steps10kCircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/steps10kCircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/steps10kCircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/steps10k"
@@ -166,6 +239,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="10000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -222,11 +296,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/steps10kLayout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps20kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps20kInfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/steps20kCircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/steps20kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/steps20kCircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/steps20kCircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/steps20kCircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/steps20kCircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/steps20k"
@@ -256,6 +367,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="20000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -313,11 +425,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/steps20kLayout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps30kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps30kInfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/steps30kCircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/steps30kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/steps30kCircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/steps30kCircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/steps30kCircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/steps30kCircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/steps30k"
@@ -347,6 +496,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="30000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -403,11 +553,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/steps30kLayout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps40kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps40kInfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/steps40kCircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/steps40kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/steps40kCircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/steps40kCircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/steps40kCircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/steps40kCircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/steps40k"
@@ -437,6 +624,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="40000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -495,12 +683,49 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/steps40kLayout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/steps60kProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/steps60kInfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/steps60kCircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/steps60kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/steps60kCircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/steps60kCircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/steps60kCircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/steps60kCircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/steps60k"
@@ -530,6 +755,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="60000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"

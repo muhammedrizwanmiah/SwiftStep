@@ -60,7 +60,6 @@ class StatsFragment : Fragment() {
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-
                 val allTimeSteps = snapshot.child("user_data/total_steps_by_day/Mon").value.toString().toInt() +
                         snapshot.child("user_data/total_steps_by_day/Tue").value.toString().toInt() +
                         snapshot.child("user_data/total_steps_by_day/Wed").value.toString().toInt() +
