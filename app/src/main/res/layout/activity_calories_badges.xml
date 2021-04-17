@@ -43,11 +43,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/caloriesBadgeTitle"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories100ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories100InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories100CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories100Check"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories100CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories100CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories100CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories100CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories100"
@@ -77,6 +114,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="100"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -133,11 +171,49 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calories100Layout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories300ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories300InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories300CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        android:max="300"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories300Check"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories300CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories300CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories300CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories300CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories300"
@@ -167,6 +243,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="300"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -223,11 +300,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calories300Layout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories500ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories500InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories500CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories500Check"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories500CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories500CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories500CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories500CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories500"
@@ -257,6 +371,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="500"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -314,11 +429,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calories500Layout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories1000ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories1000InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories1000CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories1000Check"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories1000CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories1000CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories1000CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories1000CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories1000"
@@ -348,6 +500,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="1000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -404,11 +557,48 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calories1000Layout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories1500ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories1500InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories1500CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories1500Check"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories1500CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories1500CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories1500CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories1500CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories1500"
@@ -438,6 +628,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="1500"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -478,7 +669,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:textColor="@android:color/white"
-                    android:text="40,000 Lifetime Steps"
+                    android:text="1500 Calories Burnt"
                     android:textStyle="bold"
                     android:textAllCaps="true"
                     android:gravity="center_horizontal" />
@@ -496,12 +687,49 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/card_body"
-                android:backgroundTint="@color/cardMain"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calories1500Layout"
                 >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calories3000ProgressCheckLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/calories3000InfoBG"
+                    >
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/calories3000CircularProgress"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cpb_background_progressbar_color="@color/colorAccent"
+                        app:cpb_background_progressbar_width="3dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/calories3000kCheck"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="@+id/calories3000CircularProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/calories3000CircularProgress"
+                        app:layout_constraintStart_toStartOf="@+id/calories3000CircularProgress"
+                        app:layout_constraintTop_toTopOf="@+id/calories3000CircularProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/calories3000"
@@ -531,6 +759,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="15dp"
+                        android:max="3000"
                         android:progressBackgroundTint="@android:color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -571,7 +800,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:textColor="@android:color/white"
-                    android:text="60,000 Lifetime Steps"
+                    android:text="3000 Calories Burnt"
                     android:textStyle="bold"
                     android:textAllCaps="true"
                     android:gravity="center_horizontal" />

@@ -48,7 +48,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/steps3k"
+                    android:id="@+id/steps3kimg"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/steps3k"
@@ -104,7 +104,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/colorAccent"
-                    app:layout_constraintTop_toBottomOf="@id/steps3k"
+                    app:layout_constraintTop_toBottomOf="@id/steps3kimg"
                     />
 
                 <TextView
@@ -212,7 +212,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
-                    android:id="@+id/steps10k"
+                    android:id="@+id/steps10kimg"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/steps10ku"
@@ -268,7 +268,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/cardHeadingColor"
-                    app:layout_constraintTop_toBottomOf="@id/steps10k"
+                    app:layout_constraintTop_toBottomOf="@id/steps10kimg"
                     />
 
                 <TextView
@@ -340,7 +340,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
-                    android:id="@+id/steps20k"
+                    android:id="@+id/steps20kimg"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/steps20ku"
@@ -396,7 +396,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/cardHeadingColor"
-                    app:layout_constraintTop_toBottomOf="@id/steps20k"
+                    app:layout_constraintTop_toBottomOf="@id/steps20kimg"
                     />
 
                 <TextView

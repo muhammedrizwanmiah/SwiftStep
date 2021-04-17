@@ -91,33 +91,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/steps3k"
+                android:id="@+id/steps3kimg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/steps3ku"
-                app:layout_constraintEnd_toStartOf="@+id/steps10k"
+                app:layout_constraintEnd_toStartOf="@+id/steps10kimg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
             <ImageView
-                android:id="@+id/steps10k"
+                android:id="@+id/steps10kimg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/steps10ku"
-                app:layout_constraintEnd_toStartOf="@+id/steps20k"
-                app:layout_constraintStart_toEndOf="@id/steps3k"
+                app:layout_constraintEnd_toStartOf="@+id/steps20kimg"
+                app:layout_constraintStart_toEndOf="@id/steps3kimg"
                 app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
-                android:id="@+id/steps20k"
+                android:id="@+id/steps20kimg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/steps20ku"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/steps10k"
+                app:layout_constraintStart_toEndOf="@id/steps10kimg"
                 app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
@@ -306,6 +306,8 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ADistanceLayout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
                 >
 
                 <ImageView

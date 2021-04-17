@@ -1,89 +1,125 @@
-package com.fitnessproject
 
-import android.view.View
-import kotlinx.android.synthetic.main.activity_steps_badges.*
-import org.junit.Test
+val allTimeDist = snapshot.child("user_data/total_distance_by_day/Mon").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Tue").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Wed").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Thu").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Fri").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Sat").value.toString().toDouble() +
+        snapshot.child("user_data/total_distance_by_day/Sun").value.toString().toDouble()
 
-import org.junit.Assert.*
+val percentage5Distance = (allTimeDist / 5.00 * 100).roundToInt()
+days3ProgressText.text = "You are $percentage5Distance% of the way there!"
+days3Progress.progress = allTimeDist.toString().toInt()
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
+if(percentage5Distance >= 100){
+    days3.setImageResource(R.drawable.days3)
+    days3Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days3InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days3ProgressLayout.visibility = (View.INVISIBLE)
+    days3ProgressCheckLayout.visibility = (View.VISIBLE)
+} else {
+    days3.setImageResource(R.drawable.days3u)
+    days3Layout.setBackgroundResource(R.drawable.card_body)
+    days3InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days3ProgressLayout.visibility = (View.VISIBLE)
+    days3ProgressCheckLayout.visibility = (View.INVISIBLE)
 }
 
-if(percentage10kSteps >= 60){
-    steps10k.setImageResource(R.drawable.steps10k)
-    steps10kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
-    steps10kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
-    steps10kProgressLayout.visibility = (View.INVISIBLE)
-    steps10kProgressCheckLayout.visibility = (View.VISIBLE)
+/////////
+
+val percentage10Distance = (allTimeDist / 10.00 * 100).roundToInt()
+days7ProgressText.text = "You are $percentage10Distance% of the way there!"
+days7Progress.progress = allTimeDist.toString().toInt()
+
+if(percentage10Distance >= 100){
+    days7.setImageResource(R.drawable.days7)
+    days7Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days7InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days7ProgressLayout.visibility = (View.INVISIBLE)
+    days7ProgressCheckLayout.visibility = (View.VISIBLE)
 } else {
-    steps10k.setImageResource(R.drawable.steps10ku)
-    steps10kLayout.setBackgroundResource(R.drawable.card_body)
-    steps10kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
-    steps10kProgressLayout.visibility = (View.VISIBLE)
-    steps10kProgressCheckLayout.visibility = (View.INVISIBLE)
+    days7.setImageResource(R.drawable.days7u)
+    days7Layout.setBackgroundResource(R.drawable.card_body)
+    days7InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days7ProgressLayout.visibility = (View.VISIBLE)
+    days7ProgressCheckLayout.visibility = (View.INVISIBLE)
 }
 
-if(percentage20kSteps >= 60){
-    steps20k.setImageResource(R.drawable.steps20k)
-    steps20kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
-    steps20kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
-    steps20kProgressLayout.visibility = (View.INVISIBLE)
-    steps20kProgressCheckLayout.visibility = (View.VISIBLE)
+///////////
+
+val percentage20Distance = (allTimeDist / 20.00 * 100).roundToInt()
+days14ProgressText.text = "You are $percentage20Distance% of the way there!"
+days14Progress.progress = allTimeDist.toString().toInt()
+
+if(percentage20Distance >= 100){
+    days14.setImageResource(R.drawable.days14)
+    days14Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days14InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days14ProgressLayout.visibility = (View.INVISIBLE)
+    days14ProgressCheckLayout.visibility = (View.VISIBLE)
 } else {
-    steps20k.setImageResource(R.drawable.steps20ku)
-    steps20kLayout.setBackgroundResource(R.drawable.card_body)
-    steps20kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
-    steps20kProgressLayout.visibility = (View.VISIBLE)
-    steps20kProgressCheckLayout.visibility = (View.INVISIBLE)
+    days14.setImageResource(R.drawable.days14u)
+    days14Layout.setBackgroundResource(R.drawable.card_body)
+    days14InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days14ProgressLayout.visibility = (View.VISIBLE)
+    days14ProgressCheckLayout.visibility = (View.INVISIBLE)
 }
 
-if(percentage30kSteps >= 60){
-    steps30k.setImageResource(R.drawable.steps30k)
-    steps30kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
-    steps30kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
-    steps30kProgressLayout.visibility = (View.INVISIBLE)
-    steps30kProgressCheckLayout.visibility = (View.VISIBLE)
+///////////
+
+val percentage30Distance = (allTimeDist / 30.00 * 100).roundToInt()
+days30ProgressText.text = "You are $percentage30Distance% of the way there!"
+days30Progress.progress = allTimeDist.toString().toInt()
+
+if(percentage30Distance >= 100){
+    days30.setImageResource(R.drawable.days30)
+    days30Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days30InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days30ProgressLayout.visibility = (View.INVISIBLE)
+    days30ProgressCheckLayout.visibility = (View.VISIBLE)
 } else {
-    steps30k.setImageResource(R.drawable.steps30ku)
-    steps30kLayout.setBackgroundResource(R.drawable.card_body)
-    steps30kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
-    steps30kProgressLayout.visibility = (View.VISIBLE)
-    steps30kProgressCheckLayout.visibility = (View.INVISIBLE)
+    days30.setImageResource(R.drawable.days30u)
+    days30Layout.setBackgroundResource(R.drawable.card_body)
+    days30InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days30ProgressLayout.visibility = (View.VISIBLE)
+    days30ProgressCheckLayout.visibility = (View.INVISIBLE)
+}
+/////////////
+
+val percentage42Distance = (allTimeDist / 42.00 * 100).roundToInt()
+days60ProgressText.text = "You are $percentage42Distance% of the way there!"
+days60Progress.progress = allTimeDist.toString().toInt()
+
+if(percentage42Distance >= 100){
+    days60.setImageResource(R.drawable.days60)
+    days60Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days60InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days60ProgressLayout.visibility = (View.INVISIBLE)
+    days60ProgressCheckLayout.visibility = (View.VISIBLE)
+} else {
+    days60.setImageResource(R.drawable.days60u)
+    days60Layout.setBackgroundResource(R.drawable.card_body)
+    days60InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days60ProgressLayout.visibility = (View.VISIBLE)
+    days60ProgressCheckLayout.visibility = (View.INVISIBLE)
 }
 
-if(percentage40kSteps >= 60){
-    steps40k.setImageResource(R.drawable.steps40k)
-    steps40kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
-    steps40kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
-    steps40kProgressLayout.visibility = (View.INVISIBLE)
-    steps40kProgressCheckLayout.visibility = (View.VISIBLE)
-} else {
-    steps40k.setImageResource(R.drawable.steps40ku)
-    steps40kLayout.setBackgroundResource(R.drawable.card_body)
-    steps40kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
-    steps40kProgressLayout.visibility = (View.VISIBLE)
-    steps40kProgressCheckLayout.visibility = (View.INVISIBLE)
-}
+////////////
 
-if(percentage60kSteps >= 60){
-    steps60k.setImageResource(R.drawable.steps60k)
-    steps60kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
-    steps60kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
-    steps60kProgressLayout.visibility = (View.INVISIBLE)
-    steps60kProgressCheckLayout.visibility = (View.VISIBLE)
+val percentage60Distance = (allTimeDist / 60.00 * 100).roundToInt()
+days100ProgressText.text = "You are $percentage60Distance% of the way there!"
+days100Progress.progress = allTimeDist.toString().toInt()
+
+if(percentage60Distance >= 100){
+    days100.setImageResource(R.drawable.days100)
+    days100Layout.setBackgroundResource(R.drawable.card_achievement_checked)
+    days100InfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
+    days100ProgressLayout.visibility = (View.INVISIBLE)
+    days100ProgressCheckLayout.visibility = (View.VISIBLE)
 } else {
-    steps60k.setImageResource(R.drawable.steps60ku)
-    steps60kLayout.setBackgroundResource(R.drawable.card_body)
-    steps60kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
-    steps60kProgressLayout.visibility = (View.VISIBLE)
-    steps60kProgressCheckLayout.visibility = (View.INVISIBLE)
+    days100.setImageResource(R.drawable.days100u)
+    days100Layout.setBackgroundResource(R.drawable.card_body)
+    days100InfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
+    days100ProgressLayout.visibility = (View.VISIBLE)
+    days100ProgressCheckLayout.visibility = (View.INVISIBLE)
 }

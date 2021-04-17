@@ -6,9 +6,7 @@ import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_steps_badges.*
-import kotlinx.android.synthetic.main.fragment_stats.*
 import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 class StepsBadges : AppCompatActivity() {
 
@@ -45,36 +43,17 @@ class StepsBadges : AppCompatActivity() {
                         snapshot.child("user_data/total_steps_by_day/Sat").value.toString().toInt() +
                         snapshot.child("user_data/total_steps_by_day/Sun").value.toString().toInt()
 
-                val allTimeCal = snapshot.child("user_data/total_calories_by_day/Mon").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Tue").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Wed").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Thu").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Fri").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Sat").value.toString().toDouble() +
-                        snapshot.child("user_data/total_calories_by_day/Sun").value.toString().toDouble()
-
-                val allTimeDist = snapshot.child("user_data/total_distance_by_day/Mon").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Tue").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Wed").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Thu").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Fri").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Sat").value.toString().toDouble() +
-                        snapshot.child("user_data/total_distance_by_day/Sun").value.toString().toDouble()
-
-                val totalDays = snapshot.child("user_data/all_time_day_counter").value.toString().toInt()
-
                 val percentage3kSteps = (allTimeSteps / 3000.00 * 100).roundToInt()
-
                 steps3kProgressText.text = "You are $percentage3kSteps% of the way there!"
                 steps3kProgress.progress = allTimeSteps.toString().toInt()
                 if(percentage3kSteps >= 100){
-                    steps3k.setImageResource(R.drawable.steps3k)
+                    steps3kimg.setImageResource(R.drawable.steps3k)
                     steps3kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
                     steps3kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
                     steps3kProgressLayout.visibility = (View.INVISIBLE)
                     steps3kProgressCheckLayout.visibility = (View.VISIBLE)
                 } else {
-                    steps3k.setImageResource(R.drawable.steps3ku)
+                    steps3kimg.setImageResource(R.drawable.steps3ku)
                     steps3kLayout.setBackgroundResource(R.drawable.card_body)
                     steps3kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
                     steps3kProgressLayout.visibility = (View.VISIBLE)
@@ -87,13 +66,13 @@ class StepsBadges : AppCompatActivity() {
                 steps10kProgressText.text = "You are $percentage10kSteps% of the way there!"
                 steps10kProgress.progress = allTimeSteps
                 if(percentage10kSteps >= 100){
-                    steps10k.setImageResource(R.drawable.steps10k)
+                    steps10kimg.setImageResource(R.drawable.steps10k)
                     steps10kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
                     steps10kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
                     steps10kProgressLayout.visibility = (View.INVISIBLE)
                     steps10kProgressCheckLayout.visibility = (View.VISIBLE)
                 } else {
-                    steps10k.setImageResource(R.drawable.steps10ku)
+                    steps10kimg.setImageResource(R.drawable.steps10ku)
                     steps10kLayout.setBackgroundResource(R.drawable.card_body)
                     steps10kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
                     steps10kProgressLayout.visibility = (View.VISIBLE)
@@ -106,13 +85,13 @@ class StepsBadges : AppCompatActivity() {
                 steps20kProgressText.text = "You are $percentage20kSteps% of the way there!"
                 steps20kProgress.progress = allTimeSteps
                 if(percentage20kSteps >= 100){
-                    steps20k.setImageResource(R.drawable.steps20k)
+                    steps20kimg.setImageResource(R.drawable.steps20k)
                     steps20kLayout.setBackgroundResource(R.drawable.card_achievement_checked)
                     steps20kInfoBG.setBackgroundColor(resources.getColor(R.color.colorAccent))
                     steps20kProgressLayout.visibility = (View.INVISIBLE)
                     steps20kProgressCheckLayout.visibility = (View.VISIBLE)
                 } else {
-                    steps20k.setImageResource(R.drawable.steps20ku)
+                    steps20kimg.setImageResource(R.drawable.steps20ku)
                     steps20kLayout.setBackgroundResource(R.drawable.card_body)
                     steps20kInfoBG.setBackgroundColor(resources.getColor(R.color.cardHeadingColor))
                     steps20kProgressLayout.visibility = (View.VISIBLE)
