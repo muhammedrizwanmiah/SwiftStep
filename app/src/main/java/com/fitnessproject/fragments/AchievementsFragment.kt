@@ -106,7 +106,7 @@ class AchievementsFragment : Fragment() {
                 if(totalDay >= 3){
                     days3.setImageResource(R.drawable.days3)
                 } else {
-                    days3.setImageResource(R.drawable.days3)
+                    days3.setImageResource(R.drawable.days3u)
                 }
                 if(totalDay >= 7){
                     days7.setImageResource(R.drawable.days7)

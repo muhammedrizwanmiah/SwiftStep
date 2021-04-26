@@ -7,13 +7,32 @@
     android:background="@color/darkmode_background"
     tools:context=".UpdateDetails">
 
-    <ImageView
+    <ScrollView
+        android:id="@+id/updateDetailsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/BMIConstraintLayout"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+        <ImageView
         android:id="@+id/updateDetailsCard"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        android:layout_height="470dp"
+        android:layout_height="550dp"
         app:layout_constraintTop_toBottomOf="@id/updateProfileTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/updateDetailsButton"
@@ -21,11 +40,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/input_field_background" />
 
+    <FrameLayout
+        android:id="@+id/updateDetailsHeadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="@id/updateDetailsCard">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/updateDetailsHeadingBG"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/card_heading"
+                android:tint="@color/cardHeadingColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/updateDetailsHeadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="New Details"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
     <TextView
         android:id="@+id/updateProfileTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:textSize="24dp"
         android:textColor="@android:color/white"
         android:text="Update Details"
@@ -37,11 +90,11 @@
         android:id="@+id/nameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Full Name"
         android:paddingLeft="10dp"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="@id/updateDetailsCard"
+        app:layout_constraintTop_toBottomOf="@id/updateDetailsHeadingLayout"
         app:layout_constraintStart_toStartOf="@id/updateFirstNameInput"
         />
 
@@ -324,6 +377,7 @@
         app:layout_constraintEnd_toEndOf="@id/updateDetailsCard"
         app:layout_constraintStart_toStartOf="@id/updateDetailsCard"
         app:layout_constraintTop_toBottomOf="@id/updateDetailsCard"
-        app:layout_constraintBottom_toBottomOf="parent"
         />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
