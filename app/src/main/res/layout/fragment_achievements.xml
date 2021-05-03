@@ -94,7 +94,6 @@
                 android:id="@+id/steps3kimg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/steps3ku"
                 app:layout_constraintEnd_toStartOf="@+id/steps10kimg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/AStepsHeadingBG"

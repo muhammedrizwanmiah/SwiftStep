@@ -5,7 +5,7 @@
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient_bg"
     tools:context=".LoginActivity"
     >
 
@@ -24,7 +24,7 @@
         android:id="@+id/titleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:text="Welcome!"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -37,7 +37,7 @@
         android:id="@+id/usernameInput"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/input_field_background"
         android:drawableRight="@drawable/ic_mail"
         android:drawableTint="@color/colorPrimary"
@@ -46,12 +46,10 @@
         android:textColorHint="@android:color/white"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_margin="30dp"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTv"
-        app:layout_constraintBottom_toTopOf="@id/passwordInput"
         />
 
     <EditText android:id="@+id/passwordInput"
@@ -68,7 +66,7 @@
         android:inputType="textPassword"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:drawableRight="@drawable/ic_padlock"
         android:background="@drawable/input_field_background"
         />
@@ -83,7 +81,7 @@
         android:text="LOGIN"
         android:textColor="@color/darkmode_background"
         android:textStyle="bold"
-        android:layout_margin="30dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/login_register_button_bg"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput"/>
 
@@ -92,7 +90,7 @@
         android:id="@+id/registerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
         android:text="Don't have account? Register here!"
         android:textColor="@android:color/white"
         android:textSize="14sp"
@@ -115,16 +113,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textColor="@color/darkmode_input"
-        android:text="A project by Muhammed Rizwan Miah"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

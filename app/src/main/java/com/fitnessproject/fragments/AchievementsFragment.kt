@@ -71,6 +71,10 @@ class AchievementsFragment : Fragment() {
 
                 val totalDay = snapshot.child("user_data/all_time_day_counter").value.toString().toInt()
 
+                if(steps3kimg == null){
+                    return
+                }
+
                 if(allTimeSteps >= 3000){
                     steps3kimg.setImageResource(R.drawable.steps3k)
                 } else {
@@ -81,7 +85,7 @@ class AchievementsFragment : Fragment() {
                 } else {
                     steps10kimg.setImageResource(R.drawable.steps10ku)
                 }
-                if(allTimeSteps >= 3000){
+                if(allTimeSteps >= 20000){
                     steps20kimg.setImageResource(R.drawable.steps20k)
                 } else {
                     steps20kimg.setImageResource(R.drawable.steps20ku)
