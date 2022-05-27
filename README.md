@@ -1,5 +1,7 @@
 # FitnessProject
 
+Fitness application that calculates personalised step goal for users based on user input (height, weight, activity levels)
+
 Application was tested on an Android 10 device. 
 
 **DISCLAIMER**
